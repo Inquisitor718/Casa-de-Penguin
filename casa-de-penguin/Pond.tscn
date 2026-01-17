@@ -1,0 +1,152 @@
+[gd_scene load_steps=20 format=3 uid="uid://dpadm7edd2eb0"]
+
+[ext_resource type="Script" uid="uid://djvirrobmke7h" path="res://Pond.gd" id="1_4nafw"]
+[ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="2_mck8p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nafw"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mck8p"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1mv4"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi6nm"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5sfh"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uiu4"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28mkc"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0qa5"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e5qn"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df7yq"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fu68a"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4phy"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk6oc"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1blv"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vapfn"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iupan"]
+atlas = ExtResource("2_mck8p")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j2b25"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nafw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mck8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1mv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi6nm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5sfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uiu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28mkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0qa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e5qn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df7yq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fu68a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4phy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kk6oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1blv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vapfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iupan")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_4nafw")
+
+[node name="FishingRod" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(570, 277.00003)
+rotation = 0.6191672
+scale = Vector2(1, 0.3203125)
+texture = ExtResource("2_mck8p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(619, 329)
+rotation = 0.7378773
+scale = Vector2(7.17278, 1.4098897)
+sprite_frames = SubResource("SpriteFrames_j2b25")
+frame = 3
+frame_progress = 0.70329434
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 706.00006
+offset_top = 262.0
+offset_right = 834.00006
+offset_bottom = 390.0
+scale = Vector2(1.2932451, 2.3648899)
+texture_normal = ExtResource("2_mck8p")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

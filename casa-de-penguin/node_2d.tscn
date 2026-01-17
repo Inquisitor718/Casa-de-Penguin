@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bavkm1kly7tlq"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[node name="Penguin" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Penguin"]
+
+[node name="FishingRod" type="Node2D" parent="Penguin"]
+
+[node name="Line2D" type="Line2D" parent="Penguin/FishingRod"]
+
+[node name="Icehole" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Icehole"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Icehole"]
+
+[node name="FishingManager" type="Node" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TimingBar" type="TextureProgressBar" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -353.0
+offset_bottom = -352.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 60.0
+
+[node name="ResultLabel" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
