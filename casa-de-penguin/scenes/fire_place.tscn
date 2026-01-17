@@ -1,0 +1,100 @@
+[gd_scene load_steps=12 format=3 uid="uid://bjeek4rb56exk"]
+
+[ext_resource type="Script" uid="uid://ca4amg4wlm3e6" path="res://scripts/fire_place.gd" id="1_7gyp6"]
+[ext_resource type="Script" uid="uid://bb1opt4ah3ilm" path="res://scripts/fire_ring.gd" id="2_6tqpe"]
+[ext_resource type="PackedScene" uid="uid://be1hxx8qs8ilq" path="res://scenes/poker.tscn" id="2_7gyp6"]
+[ext_resource type="PackedScene" uid="uid://cc8uhrey8qc28" path="res://scenes/coal.tscn" id="2_x4ixd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e5wvw"]
+radius = 201.3579
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_648hr"]
+size = Vector2(1144.5, 24.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jt0tu"]
+size = Vector2(24, 611.6875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tyx4h"]
+size = Vector2(24.5, 604.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4ixd"]
+size = Vector2(1831, 977)
+
+[sub_resource type="Gradient" id="Gradient_x4ixd"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e5wvw"]
+gradient = SubResource("Gradient_x4ixd")
+
+[node name="FirePlace" type="Node2D"]
+script = ExtResource("1_7gyp6")
+coal_scene = ExtResource("2_x4ixd")
+
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
+
+[node name="FireRing" type="Area2D" parent="." groups=["ring"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_6tqpe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireRing"]
+position = Vector2(947, 522)
+shape = SubResource("CircleShape2D_e5wvw")
+
+[node name="ForceCenter" type="Marker2D" parent="FireRing"]
+position = Vector2(953, 525)
+
+[node name="Poker" parent="." instance=ExtResource("2_7gyp6")]
+position = Vector2(-157, -53)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 785.0
+offset_top = 32.0
+offset_right = 961.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 40
+text = "Score : 0"
+
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2(25, 27)
+scale = Vector2(1.7001469, 1.7001469)
+collision_layer = 4
+collision_mask = 2
+
+[node name="Top" type="CollisionShape2D" parent="Walls"]
+position = Vector2(547.59973, -8.234585)
+shape = SubResource("RectangleShape2D_648hr")
+
+[node name="Left" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-12, 310.15625)
+shape = SubResource("RectangleShape2D_jt0tu")
+
+[node name="Right" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1104, 304.75)
+shape = SubResource("RectangleShape2D_tyx4h")
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls"]
+position = Vector2(546, 602)
+shape = SubResource("RectangleShape2D_648hr")
+
+[node name="SpawnArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+position = Vector2(945.5, 525.5)
+shape = SubResource("RectangleShape2D_x4ixd")
+
+[node name="Timer2" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_progress = SubResource("GradientTexture1D_e5wvw")
+
+[connection signal="body_entered" from="FireRing" to="FireRing" method="_on_body_entered"]
+[connection signal="body_exited" from="FireRing" to="FireRing" method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
