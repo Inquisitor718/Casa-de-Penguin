@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://26n3qaq1gt81"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bjrf3"]
+radius = 25.0
+height = 114.0
+
+[node name="Penguin" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_bjrf3")

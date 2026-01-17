@@ -1,17 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3yxwak4tgxpc"]
+[gd_scene load_steps=9 format=3 uid="uid://d3yxwak4tgxpc"]
 
-[ext_resource type="Script" uid="uid://nyldrvololwx" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://s512ct1auo84" path="res://Scenes/room_1.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://nyldrvololwx" path="res://Scripts/main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://c4xt2cvum2yif" path="res://Scenes/Fire.tscn" id="2_6bp64"]
+[ext_resource type="PackedScene" uid="uid://dnrd5tmy1m3ex" path="res://Scenes/Kitchen.tscn" id="3_344ge"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://npv7hh330pwv" path="res://Scenes/test_button.gd" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://cu20c4s71y0wj" path="res://Scenes/Lawn.tscn" id="4_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://jm77fh6jhdxx" path="res://Scenes/Pond.tscn" id="5_hptm8"]
+[ext_resource type="PackedScene" uid="uid://26n3qaq1gt81" path="res://Scenes/Penguin.tscn" id="8_344ge"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ig7tw")
-room = ExtResource("2_0xm2m")
+room = ExtResource("2_6bp64")
+room2 = ExtResource("3_344ge")
+room3 = ExtResource("4_ynf5e")
+room4 = ExtResource("5_hptm8")
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(0.09375, -2.8390636)
+scale = Vector2(1.0625, 0.9101562)
 polygon = PackedVector2Array(5, -22, 0, -11, 0, 10, 5, 0)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
@@ -28,11 +38,54 @@ position = Vector2(41, -9)
 scale = Vector2(0.58928573, 0.5852272)
 polygon = PackedVector2Array(-20.090908, -2.2038813, -6.090908, -2.2038813, -6.090908, 8.796119, -20.090908, 8.796119)
 
-[node name="TextureButton" type="TextureButton" parent="."]
-offset_left = -3.0
-offset_top = 138.0
-offset_right = 125.0
-offset_bottom = 578.0
+[node name="TextureButton2" type="TextureButton" parent="."]
+offset_left = 869.0
+offset_top = 540.0
+offset_right = 997.0
+offset_bottom = 668.0
+scale = Vector2(2.2238474, 0.7149605)
+texture_normal = ExtResource("3_h2yge")
+script = ExtResource("4_jjvhh")
+
+[node name="Kitchen" type="TextureButton" parent="."]
+offset_left = 25.0
+offset_top = 286.0
+offset_right = 153.0
+offset_bottom = 414.0
+scale = Vector2(0.49168193, 1.5607108)
 texture_normal = ExtResource("3_h2yge")
 
-[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[node name="Lawn" type="TextureButton" parent="."]
+offset_left = 729.0
+offset_top = -2.0
+offset_right = 857.0
+offset_bottom = 126.0
+texture_normal = ExtResource("3_h2yge")
+
+[node name="Fire" type="TextureButton" parent="."]
+offset_left = 443.0
+offset_top = 285.0
+offset_right = 571.0
+offset_bottom = 413.0
+scale = Vector2(1.9199988, 1)
+texture_normal = ExtResource("3_h2yge")
+
+[node name="pond" type="TextureButton" parent="."]
+offset_left = 1086.0
+offset_top = 216.0
+offset_right = 1214.0
+offset_bottom = 344.0
+scale = Vector2(0.4683954, 2.0020547)
+texture_normal = ExtResource("3_h2yge")
+
+[node name="Penguin" parent="." instance=ExtResource("8_344ge")]
+position = Vector2(376, 300)
+
+[node name="Penguin2" parent="." instance=ExtResource("8_344ge")]
+position = Vector2(748, 283)
+
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="Kitchen" to="." method="_on_kitchen_pressed"]
+[connection signal="pressed" from="Lawn" to="." method="_on_lawn_pressed"]
+[connection signal="pressed" from="Fire" to="." method="_on_fire_pressed"]
+[connection signal="pressed" from="pond" to="." method="_on_pond_pressed"]

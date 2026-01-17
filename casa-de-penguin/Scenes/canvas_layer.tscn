@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp3nqsg0gmuwo"]
+
+[ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="1_q85f0"]
+[ext_resource type="Script" uid="uid://bj22tb5jjup07" path="res://Scenes/texture_progress_bar.gd" id="2_p1mel"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 23.0
+offset_top = 20.0
+offset_right = 263.0
+offset_bottom = 148.0
+value = 50.0
+rounded = true
+texture_progress = ExtResource("1_q85f0")
+script = ExtResource("2_p1mel")

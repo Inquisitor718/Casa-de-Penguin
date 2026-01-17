@@ -1,6 +1,5 @@
-extends Node2D
+extends TextureButton
 
-@export var room: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +11,6 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_texture_button_pressed() -> void:
-	await get_tree().create_timer(0.1).timeout
-	get_tree().change_scene_to_packed(room)
+func _on_pressed() -> void:
+	ProgresBar.add_energy(5.0)
+	print(ProgresBar.Current_Energy)
