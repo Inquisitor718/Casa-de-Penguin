@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3yxwak4tgxpc"]
+
+[ext_resource type="Script" uid="uid://nyldrvololwx" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://s512ct1auo84" path="res://Scenes/room_1.tscn" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="3_h2yge"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ig7tw")
+room = ExtResource("2_0xm2m")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(5, -22, 0, -11, 0, 10, 5, 0)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(50, 1)
+polygon = PackedVector2Array(14, -23, 18, -11, 18, 10, 14, -1)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(42.114285, -9.078979)
+scale = Vector2(0.58928573, 0.5852272)
+polygon = PackedVector2Array(3.666668, -21, 17.666668, -21, 17.666668, -10, 3.666668, -10)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(41, -9)
+scale = Vector2(0.58928573, 0.5852272)
+polygon = PackedVector2Array(-20.090908, -2.2038813, -6.090908, -2.2038813, -6.090908, 8.796119, -20.090908, 8.796119)
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = -3.0
+offset_top = 138.0
+offset_right = 125.0
+offset_bottom = 578.0
+texture_normal = ExtResource("3_h2yge")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
