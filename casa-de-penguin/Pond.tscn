@@ -120,7 +120,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 30.0
+"speed": 1.5
 }]
 
 [node name="Node2D" type="Node2D"]
@@ -148,5 +148,14 @@ offset_right = 834.00006
 offset_bottom = 390.0
 scale = Vector2(1.2932451, 2.3648899)
 texture_normal = ExtResource("2_mck8p")
+
+[node name="reel" type="TextureProgressBar" parent="."]
+offset_left = 69.0
+offset_top = 565.0
+offset_right = 217.06238
+offset_bottom = 693.0
+rotation = -1.5707964
+scale = Vector2(2.3130333, 0.63180476)
+texture_progress = ExtResource("2_mck8p")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

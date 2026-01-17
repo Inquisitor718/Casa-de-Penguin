@@ -1,31 +1,29 @@
 extends Node2D
 
+@export var fish_interval = 6.0
+@export var reel_interval = 2.0
 var IsFish = false
 @onready var rod: AnimatedSprite2D = $AnimatedSprite2D
+@onready var reel: TextureProgressBar = $reel
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for i in range(4):
-		await get_tree().create_timer(4.0).timeout
+		await get_tree().create_timer(fish_interval).timeout
 		fish_on_hook()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
 func fish_on_hook():
 	print("fish on hook")
 	IsFish = true
 	rod.play("default")
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(reel_interval).timeout
 	IsFish = false
 	
-
-
 func _on_texture_button_pressed() -> void:
 	if IsFish:
-		print("fish caught")
-		
-		IsFish = false
+		print("reeling in")
+		reel.value += 12.5
+		if reel.value == 100:
+			print("fish caught")
+			IsFish = false
+			reel.value = 0
