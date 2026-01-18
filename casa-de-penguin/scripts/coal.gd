@@ -1,7 +1,9 @@
 extends RigidBody2D
+@onready var coal: RigidBody2D = $"."
 
-@export var k := 0.03
+@export var k := 0.5
 @export var base_radius := 90 # 👈 You tweak this manually
+@onready var marker_2d: Marker2D = $Marker2D
 
 var ring_radius := 0.0
 var calm_radius := 0.0
@@ -19,7 +21,6 @@ func _ready():
 	ring = get_tree().get_first_node_in_group("ring")
 	if ring:
 		ring.radius_changed.connect(_on_radius_changed)
-
 		# Initial sync
 		var shape = ring.get_node("CollisionShape2D").shape
 		_on_radius_changed(shape.radius * ring.global_scale.x)
@@ -29,21 +30,20 @@ func _on_radius_changed(new_radius: float):
 	ring_radius = new_radius
 
 	# ✅ Final radius combines your tuning + ring growth
-	calm_radius = base_radius + ring_radius
+	calm_radius = ring_radius
 
 
 func _integrate_forces(state):
 	if ring == null:
 		return
-
 	var center = ring.get_node("ForceCenter").global_position
 	var pos = state.transform.origin
 	var dist = pos.distance_to(center)
 
 	if dist < calm_radius:
 		var dir = (pos - center).normalized()
-
+#calm_radius - 
 		var t = calm_radius - dist
-		var strength = max(30.0, k * t * t)
+		var strength =  (k) * t
 
-		state.apply_central_force(dir * strength)
+		state.apply_central_impulse(dir * strength)

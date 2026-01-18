@@ -13,6 +13,8 @@ inertia = 1.0
 linear_damp = 0.5
 angular_damp = 0.5
 script = ExtResource("1_tqxuk")
+k = null
+base_radius = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
