@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc8uhrey8qc28"]
+
+[ext_resource type="Script" uid="uid://064f8712j4gr" path="res://scripts/coal.gd" id="1_tqxuk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tqxuk"]
+radius = 70.0
+
+[node name="Coal" type="RigidBody2D" groups=["coal"]]
+collision_layer = 2
+collision_mask = 7
+gravity_scale = 0.0
+inertia = 1.0
+linear_damp = 0.5
+angular_damp = 0.5
+script = ExtResource("1_tqxuk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tqxuk")
+
+[node name="Marker2D" type="Marker2D" parent="."]
