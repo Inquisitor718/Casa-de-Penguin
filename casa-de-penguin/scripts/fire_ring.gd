@@ -4,7 +4,7 @@ signal radius_changed(new_radius: float)
 signal score_changed(new_score: int)
 
 @export var min_radius := 120.0
-@export var max_radius := 400.0
+@export var max_radius := 500.0
 @export var max_coals_for_full_size := 15
 
 @onready var collision := $CollisionShape2D
@@ -18,7 +18,6 @@ func _ready():
 	monitoring = true
 	last_radius = circle.radius
 
-	# Use events instead of scanning every frame
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
@@ -43,4 +42,4 @@ func _process(delta):
 
 	if abs(circle.radius - last_radius) > 0.5:
 		last_radius = circle.radius
-		emit_signal("radius_changed", circle.radius)
+		emit_signal("radius_changed", circle.radius * global_scale.x)

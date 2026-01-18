@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjeek4rb56exk"]
+[gd_scene load_steps=11 format=3 uid="uid://bjeek4rb56exk"]
 
 [ext_resource type="Script" uid="uid://ca4amg4wlm3e6" path="res://scripts/fire_place.gd" id="1_7gyp6"]
 [ext_resource type="Script" uid="uid://bb1opt4ah3ilm" path="res://scripts/fire_ring.gd" id="2_6tqpe"]
 [ext_resource type="PackedScene" uid="uid://be1hxx8qs8ilq" path="res://scenes/poker.tscn" id="2_7gyp6"]
 [ext_resource type="PackedScene" uid="uid://cc8uhrey8qc28" path="res://scenes/coal.tscn" id="2_x4ixd"]
+[ext_resource type="Texture2D" uid="uid://0l78rg8613eq" path="res://assets/198114-906539891_tiny-removebg-preview.png" id="5_e5wvw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5wvw"]
 radius = 201.3579
@@ -19,11 +20,6 @@ size = Vector2(24.5, 604.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4ixd"]
 size = Vector2(1831, 977)
-
-[sub_resource type="Gradient" id="Gradient_x4ixd"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_e5wvw"]
-gradient = SubResource("Gradient_x4ixd")
 
 [node name="FirePlace" type="Node2D"]
 script = ExtResource("1_7gyp6")
@@ -48,7 +44,7 @@ position = Vector2(953, 525)
 position = Vector2(-157, -53)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 25.0
 one_shot = true
 autostart = true
 
@@ -90,10 +86,13 @@ shape = SubResource("RectangleShape2D_648hr")
 position = Vector2(945.5, 525.5)
 shape = SubResource("RectangleShape2D_x4ixd")
 
-[node name="Timer2" type="TextureProgressBar" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-texture_progress = SubResource("GradientTexture1D_e5wvw")
+[node name="TimerBar" type="TextureProgressBar" parent="."]
+offset_left = 1303.0
+offset_top = 55.0
+offset_right = 1856.0
+offset_bottom = 147.0
+value = 100.0
+texture_progress = ExtResource("5_e5wvw")
 
 [connection signal="body_entered" from="FireRing" to="FireRing" method="_on_body_entered"]
 [connection signal="body_exited" from="FireRing" to="FireRing" method="_on_body_exited"]
