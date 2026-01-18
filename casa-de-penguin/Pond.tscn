@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dpadm7edd2eb0"]
+[gd_scene load_steps=22 format=3 uid="uid://dpadm7edd2eb0"]
 
 [ext_resource type="Script" uid="uid://djvirrobmke7h" path="res://Pond.gd" id="1_4nafw"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="2_mck8p"]
@@ -120,8 +120,13 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 1.5
+"speed": 7.5
 }]
+
+[sub_resource type="Gradient" id="Gradient_4nafw"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mck8p"]
+gradient = SubResource("Gradient_4nafw")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_4nafw")
@@ -156,6 +161,6 @@ offset_right = 217.06238
 offset_bottom = 693.0
 rotation = -1.5707964
 scale = Vector2(2.3130333, 0.63180476)
-texture_progress = ExtResource("2_mck8p")
+texture_progress = SubResource("GradientTexture2D_mck8p")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
