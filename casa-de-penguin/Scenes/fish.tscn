@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs2ynfyt0nf3y"]
+
+[ext_resource type="Script" uid="uid://r0x6yna0hpr3" path="res://Scenes/fish.gd" id="1_twvwo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xnr3r"]
+radius = 20.0
+height = 138.0
+
+[sub_resource type="Gradient" id="Gradient_xnr3r"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_twvwo"]
+gradient = SubResource("Gradient_xnr3r")
+fill_from = Vector2(0.56125355, 0.42735043)
+fill_to = Vector2(1, 1)
+
+[node name="Fish" type="Area2D"]
+rotation = -0.5235988
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_twvwo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_xnr3r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.9404153, 0.6448007)
+texture = SubResource("GradientTexture2D_twvwo")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

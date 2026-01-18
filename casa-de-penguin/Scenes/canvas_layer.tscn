@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp3nqsg0gmuwo"]
+
+[ext_resource type="Script" uid="uid://bj22tb5jjup07" path="res://Scenes/texture_progress_bar.gd" id="2_p1mel"]
+
+[sub_resource type="Gradient" id="Gradient_5oaki"]
+offsets = PackedFloat32Array(0, 0.5648148, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.27487177, 0.48778927, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q85f0"]
+gradient = SubResource("Gradient_5oaki")
+width = 1000
+height = 32
+fill_from = Vector2(0, 0.5416667)
+fill_to = Vector2(1, 0.5352564)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 23.0
+offset_top = 20.0
+offset_right = 1023.0
+offset_bottom = 36.0
+value = 50.0
+rounded = true
+texture_progress = SubResource("GradientTexture2D_q85f0")
+script = ExtResource("2_p1mel")
