@@ -1,12 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://26n3qaq1gt81"]
+[gd_scene load_steps=5 format=3 uid="uid://26n3qaq1gt81"]
+
+[ext_resource type="Script" uid="uid://6kum6xr1evw0" path="res://Scenes/penguin.gd" id="1_lv08y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bjrf3"]
 radius = 25.0
 height = 114.0
 
+[sub_resource type="Gradient" id="Gradient_344ge"]
+offsets = PackedFloat32Array(0.7380952, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bjrf3"]
+gradient = SubResource("Gradient_344ge")
+fill_from = Vector2(0.49425286, 0.48563218)
+fill_to = Vector2(1, 0.49137932)
+repeat = 2
+
 [node name="Penguin" type="Area2D"]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_lv08y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_bjrf3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.4761904, 3.0827212)
+texture = SubResource("GradientTexture2D_bjrf3")

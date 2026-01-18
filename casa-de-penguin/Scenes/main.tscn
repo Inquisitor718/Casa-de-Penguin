@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3yxwak4tgxpc"]
+[gd_scene load_steps=11 format=3 uid="uid://d3yxwak4tgxpc"]
 
 [ext_resource type="Script" uid="uid://nyldrvololwx" path="res://Scripts/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://c4xt2cvum2yif" path="res://Scenes/Fire.tscn" id="2_6bp64"]
+[ext_resource type="PackedScene" uid="uid://bs2ynfyt0nf3y" path="res://Scenes/fish.tscn" id="2_hptm8"]
+[ext_resource type="PackedScene" uid="uid://2xen71bnxsnk" path="res://Scenes/HotCoco.tscn" id="2_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://dnrd5tmy1m3ex" path="res://Scenes/Kitchen.tscn" id="3_344ge"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://npv7hh330pwv" path="res://Scenes/test_button.gd" id="4_jjvhh"]
@@ -11,80 +13,71 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ig7tw")
+fish_scene = ExtResource("2_hptm8")
+hot_choco = ExtResource("2_ynf5e")
 room = ExtResource("2_6bp64")
 room2 = ExtResource("3_344ge")
 room3 = ExtResource("4_ynf5e")
 room4 = ExtResource("5_hptm8")
+fish_spacing = 100.0
+coco_spacing = 125.0
 
-[node name="Area2D" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2(0.09375, -2.8390636)
-scale = Vector2(1.0625, 0.9101562)
-polygon = PackedVector2Array(5, -22, 0, -11, 0, 10, 5, 0)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2(50, 1)
-polygon = PackedVector2Array(14, -23, 18, -11, 18, 10, 14, -1)
-
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2(42.114285, -9.078979)
-scale = Vector2(0.58928573, 0.5852272)
-polygon = PackedVector2Array(3.666668, -21, 17.666668, -21, 17.666668, -10, 3.666668, -10)
-
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2(41, -9)
-scale = Vector2(0.58928573, 0.5852272)
-polygon = PackedVector2Array(-20.090908, -2.2038813, -6.090908, -2.2038813, -6.090908, 8.796119, -20.090908, 8.796119)
-
-[node name="TextureButton2" type="TextureButton" parent="."]
-offset_left = 869.0
-offset_top = 540.0
-offset_right = 997.0
-offset_bottom = 668.0
+[node name="comfy++" type="TextureButton" parent="."]
+offset_left = 818.0
+offset_top = 545.0
+offset_right = 946.0
+offset_bottom = 673.0
 scale = Vector2(2.2238474, 0.7149605)
 texture_normal = ExtResource("3_h2yge")
 script = ExtResource("4_jjvhh")
 
 [node name="Kitchen" type="TextureButton" parent="."]
-offset_left = 25.0
-offset_top = 286.0
-offset_right = 153.0
-offset_bottom = 414.0
-scale = Vector2(0.49168193, 1.5607108)
+offset_left = -25.0
+offset_top = 63.000015
+offset_right = 103.0
+offset_bottom = 191.00002
+scale = Vector2(0.49168193, 3.4007108)
 texture_normal = ExtResource("3_h2yge")
 
 [node name="Lawn" type="TextureButton" parent="."]
-offset_left = 729.0
-offset_top = -2.0
-offset_right = 857.0
-offset_bottom = 126.0
+offset_left = 831.99994
+offset_top = 37.0
+offset_right = 959.99994
+offset_bottom = 165.0
+scale = Vector2(1.9523809, 1.2)
 texture_normal = ExtResource("3_h2yge")
 
 [node name="Fire" type="TextureButton" parent="."]
-offset_left = 443.0
-offset_top = 285.0
-offset_right = 571.0
-offset_bottom = 413.0
-scale = Vector2(1.9199988, 1)
+offset_left = 428.0
+offset_top = 308.0
+offset_right = 556.0
+offset_bottom = 436.0
+scale = Vector2(2.2241962, 1.1584363)
 texture_normal = ExtResource("3_h2yge")
 
 [node name="pond" type="TextureButton" parent="."]
-offset_left = 1086.0
-offset_top = 216.0
-offset_right = 1214.0
-offset_bottom = 344.0
-scale = Vector2(0.4683954, 2.0020547)
+offset_left = 1109.0
+offset_top = 59.00003
+offset_right = 1237.0
+offset_bottom = 187.00003
+scale = Vector2(0.7499363, 3.20544)
 texture_normal = ExtResource("3_h2yge")
 
 [node name="Penguin" parent="." instance=ExtResource("8_344ge")]
-position = Vector2(376, 300)
+position = Vector2(282.00003, 330)
+scale = Vector2(1.7926829, 1.7926829)
 
 [node name="Penguin2" parent="." instance=ExtResource("8_344ge")]
-position = Vector2(748, 283)
+position = Vector2(839, 330)
+scale = Vector2(1.7216258, 1.7216258)
 
-[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[node name="table" type="Marker2D" parent="."]
+position = Vector2(414, 562)
+
+[node name="table_coco" type="Marker2D" parent="."]
+position = Vector2(469, 625)
+
+[connection signal="pressed" from="comfy++" to="." method="_on_texture_button_2_pressed"]
 [connection signal="pressed" from="Kitchen" to="." method="_on_kitchen_pressed"]
 [connection signal="pressed" from="Lawn" to="." method="_on_lawn_pressed"]
 [connection signal="pressed" from="Fire" to="." method="_on_fire_pressed"]

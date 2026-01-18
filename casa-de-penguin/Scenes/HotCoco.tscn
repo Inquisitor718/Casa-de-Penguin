@@ -1,10 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://2xen71bnxsnk"]
+[gd_scene load_steps=5 format=3 uid="uid://2xen71bnxsnk"]
+
+[ext_resource type="Script" uid="uid://bbckpmwj1fb5n" path="res://Scenes/hot_coco.gd" id="1_uli47"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwkgm"]
 radius = 53.009434
 
-[node name="Area2D" type="Area2D"]
+[sub_resource type="Gradient" id="Gradient_rwkgm"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.3809524, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.42422232, 0.13066849, 0.0087289205, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uli47"]
+gradient = SubResource("Gradient_rwkgm")
+fill_from = Vector2(1, 0.33620688)
+fill_to = Vector2(0.13793103, 0.8534483)
+
+[node name="hot_coco" type="Area2D"]
+scale = Vector2(0.54858196, 0.54858196)
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_uli47")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_rwkgm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, 7.999996)
+scale = Vector2(1.6452405, 1.6452405)
+texture = SubResource("GradientTexture2D_uli47")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
