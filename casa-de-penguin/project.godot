@@ -15,6 +15,12 @@ run/main_scene="uid://bjeek4rb56exk"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ProgresBar="*res://Scripts/progres Bar.gd"
+GlobalCanvasLayer="*res://Scenes/canvas_layer.tscn"
+PauseMenu="*res://Scenes/pause_menu.tscn"
+
 [display]
 
 window/size/viewport_width=1920
@@ -27,8 +33,3 @@ ring=""
 run/main_scene="uid://d3yxwak4tgxpc"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
-
-[autoload]
-
-ProgresBar="*res://Scripts/progres Bar.gd"
-GlobalCanvasLayer="*res://Scenes/canvas_layer.tscn"
