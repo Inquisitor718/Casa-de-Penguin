@@ -8,13 +8,14 @@ var dragvel = Vector2.ZERO
 var velocity = 500
 var istimeout = 0
 var startposn = 0
+var spill =false
 var endposn = 0
 var starttime = 0
 var endtime = 0
 var timer = Timer.new()
 @onready var chain_123: Area2D = $Chain123
 
-
+@export var spill_thershold := 50.0
 
 func _ready() -> void:
 	chain_123.input_pickable = true
@@ -25,6 +26,7 @@ func _process(delta: float) -> void:
 		var linedirn = (b-a).normalized()
 		var projected = a + linedirn*((mouseposn - a).dot(linedirn))
 		projected = clamp_point_to_segment(projected,a,b)
+		@warning_ignore("integer_division")
 		dragvel = (startposn - endposn) / (endtime - starttime)
 		position = projected
 		lastposition = projected
@@ -50,10 +52,11 @@ func _input(event: InputEvent) -> void:
 			endposn = chain_123.global_position.y
 			#await get_tree().create_timer(0.5).timeout
 			istimeout = 1
-			_on_drag_release()
-		
-func _on_drag_release():
-	print("Drag velocity :", dragvel)
+	if drag and event is InputEventMouseMotion:
+		if event.relative.y > spill_thershold:
+			spill = true
+			print("spill")
+
 	
 func clamp_point_to_segment (p: Vector2, vara: Vector2, varb: Vector2):
 	var t = (p-vara).dot(varb-vara)/(varb-vara).length_squared()
