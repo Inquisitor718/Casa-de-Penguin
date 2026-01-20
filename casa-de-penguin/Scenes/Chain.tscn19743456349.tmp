@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqkdmfcj41bim"]
+
+[ext_resource type="Script" uid="uid://dnvtwikxsgewy" path="res://Scripts/chain.gd" id="1_oeqib"]
+[ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="2_u2rjf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wtv3q"]
+radius = 37.0
+height = 74.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_oeqib")
+
+[node name="Chain123" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chain123"]
+shape = SubResource("CapsuleShape2D_wtv3q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Chain123"]
+z_index = -1
+texture = ExtResource("2_u2rjf")
