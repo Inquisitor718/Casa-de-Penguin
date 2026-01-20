@@ -1,15 +1,31 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3yxwak4tgxpc"]
+[gd_scene load_steps=15 format=3 uid="uid://d3yxwak4tgxpc"]
 
 [ext_resource type="Script" uid="uid://nyldrvololwx" path="res://Scripts/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://c4xt2cvum2yif" path="res://Scenes/Fire.tscn" id="2_6bp64"]
 [ext_resource type="PackedScene" uid="uid://bs2ynfyt0nf3y" path="res://Scenes/fish.tscn" id="2_hptm8"]
 [ext_resource type="PackedScene" uid="uid://2xen71bnxsnk" path="res://Scenes/HotCoco.tscn" id="2_ynf5e"]
-[ext_resource type="PackedScene" uid="uid://dnrd5tmy1m3ex" path="res://Scenes/Kitchen.tscn" id="3_344ge"]
+[ext_resource type="PackedScene" uid="uid://b47dnlbyly1av" path="res://Scenes/Kitchen.tscn" id="3_344ge"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://npv7hh330pwv" path="res://Scenes/test_button.gd" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cu20c4s71y0wj" path="res://Scenes/Lawn.tscn" id="4_ynf5e"]
-[ext_resource type="PackedScene" uid="uid://jm77fh6jhdxx" path="res://Scenes/Pond.tscn" id="5_hptm8"]
+[ext_resource type="PackedScene" uid="uid://b47dnlbyly1av" path="res://Scenes/kitchen.tscn" id="8_6iyac"]
 [ext_resource type="PackedScene" uid="uid://26n3qaq1gt81" path="res://Scenes/Penguin.tscn" id="8_344ge"]
+[ext_resource type="PackedScene" uid="uid://dm00hdsb8yor3" path="res://Scenes/Snowman.tscn" id="8_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://bjeek4rb56exk" path="res://Scenes/fire_place.tscn" id="9_6iyac"]
+[ext_resource type="PackedScene" uid="uid://dpadm7edd2eb0" path="res://Pond.tscn" id="10_fdnlq"]
+
+[sub_resource type="PackedScene" id="PackedScene_fdnlq"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("room2", "Node2D", "Sprite2D", "Sprite2D"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 0, 0, 1073741824, 0, 3, 2, -1, 0, 0),
+"variants": [],
+"version": 3
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ig7tw")
@@ -18,7 +34,11 @@ hot_choco = ExtResource("2_ynf5e")
 room = ExtResource("2_6bp64")
 room2 = ExtResource("3_344ge")
 room3 = ExtResource("4_ynf5e")
-room4 = ExtResource("5_hptm8")
+room4 = SubResource("PackedScene_fdnlq")
+snowman = ExtResource("8_d1ilt")
+kitchen = ExtResource("8_6iyac")
+fire_place = ExtResource("9_6iyac")
+Pond = ExtResource("10_fdnlq")
 fish_spacing = 100.0
 coco_spacing = 125.0
 

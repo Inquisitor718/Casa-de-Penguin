@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://bjeek4rb56exk"]
 
-[ext_resource type="Script" uid="uid://ca4amg4wlm3e6" path="res://scripts/fire_place.gd" id="1_7gyp6"]
-[ext_resource type="Script" uid="uid://bb1opt4ah3ilm" path="res://scripts/fire_ring.gd" id="2_6tqpe"]
-[ext_resource type="PackedScene" uid="uid://be1hxx8qs8ilq" path="res://scenes/poker.tscn" id="2_7gyp6"]
-[ext_resource type="PackedScene" uid="uid://cc8uhrey8qc28" path="res://scenes/coal.tscn" id="2_x4ixd"]
+[ext_resource type="Script" uid="uid://ca4amg4wlm3e6" path="res://Scripts/fire_place.gd" id="1_7gyp6"]
+[ext_resource type="Script" uid="uid://bb1opt4ah3ilm" path="res://Scripts/fire_ring.gd" id="2_6tqpe"]
+[ext_resource type="PackedScene" uid="uid://be1hxx8qs8ilq" path="res://Scenes/poker.tscn" id="2_7gyp6"]
+[ext_resource type="PackedScene" uid="uid://cc8uhrey8qc28" path="res://Scenes/coal.tscn" id="2_x4ixd"]
 [ext_resource type="Texture2D" uid="uid://0l78rg8613eq" path="res://assets/198114-906539891_tiny-removebg-preview.png" id="5_e5wvw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5wvw"]

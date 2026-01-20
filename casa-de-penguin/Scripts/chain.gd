@@ -1,6 +1,8 @@
 extends Node2D
 @export var a : Vector2 = Vector2(870,0)
 @export var b : Vector2 = Vector2(870,500)
+@export var mainscene_transition: PackedScene
+
 
 var drag=false
 var lastposition = Vector2.ZERO
@@ -68,3 +70,9 @@ func start():
 		
 func stop():
 	endtime = Time.get_ticks_msec()/10000.0
+
+
+
+
+func _on_timer_timeout() -> void:
+	get_tree().change_scene_to_packed(mainscene_transition)

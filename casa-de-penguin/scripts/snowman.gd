@@ -1,4 +1,5 @@
 extends Node2D
+@export var mainscene_transition: PackedScene
 @onready var snowman_pos: Marker2D = $snowman_pos
 var timeout=0
 @export var points:int
@@ -48,3 +49,10 @@ func _process(delta: float) -> void:
 				_rotate(-0.005)
 			elif(snowman_pos.global_rotation<1.5):
 				_rotate(0.005)
+
+
+
+
+
+func _on_timer_timeout() -> void:
+	get_tree().change_scene_to_packed(mainscene_transition)

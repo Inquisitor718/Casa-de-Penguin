@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://dpadm7edd2eb0"]
+[gd_scene load_steps=23 format=3 uid="uid://dpadm7edd2eb0"]
 
 [ext_resource type="Script" uid="uid://djvirrobmke7h" path="res://Pond.gd" id="1_4nafw"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="2_mck8p"]
+[ext_resource type="PackedScene" uid="uid://d3yxwak4tgxpc" path="res://Scenes/main.tscn" id="2_n1mv4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4nafw"]
 atlas = ExtResource("2_mck8p")
@@ -130,6 +131,7 @@ gradient = SubResource("Gradient_4nafw")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_4nafw")
+mainscene_transisiton = ExtResource("2_n1mv4")
 
 [node name="FishingRod" type="Sprite2D" parent="."]
 visible = false
@@ -163,4 +165,10 @@ rotation = -1.5707964
 scale = Vector2(3.607644, 0.5108847)
 texture_progress = SubResource("GradientTexture2D_mck8p")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

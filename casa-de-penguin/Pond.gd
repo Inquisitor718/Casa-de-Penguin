@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var mainscene_transisiton: PackedScene
 @export var fish_interval := 6.0      
 @export var reel_interval := 5.0     
 
@@ -67,3 +68,7 @@ func _on_texture_button_pressed() -> void:
 	if reel.value >= 100:
 		print("fish caught!")
 		IsFish = false
+
+
+func _on_timer_timeout() -> void:
+	get_tree().change_scene_to_packed(mainscene_transisiton)

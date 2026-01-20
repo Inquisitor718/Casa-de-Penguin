@@ -10,6 +10,13 @@ extends Node2D
 @export var room2: PackedScene
 @export var room3: PackedScene
 @export var room4: PackedScene
+@export var snowman: PackedScene
+@export var kitchen: PackedScene
+@export var fire_place: PackedScene
+@export var Pond: PackedScene
+
+
+
 
 var fish= ProgresBar.fish_count
 var choco= ProgresBar.hot_choco
@@ -65,20 +72,20 @@ func _on_texture_button_2_pressed() -> void:
 
 func _on_kitchen_pressed() -> void:
 	await get_tree().create_timer(0.1).timeout
-	get_tree().change_scene_to_packed(room2)
+	get_tree().change_scene_to_packed(kitchen)
 
 
 func _on_lawn_pressed() -> void:
 	await get_tree().create_timer(0.1).timeout
-	get_tree().change_scene_to_packed(room3)
+	get_tree().change_scene_to_packed(snowman)
 
 
 
 func _on_fire_pressed() -> void:
 	await get_tree().create_timer(0.1).timeout
-	get_tree().change_scene_to_packed(room)
+	get_tree().change_scene_to_packed(fire_place)
 
 
 func _on_pond_pressed() -> void:
 	await get_tree().create_timer(0.1).timeout
-	get_tree().change_scene_to_packed(room)
+	get_tree().change_scene_to_packed(Pond)
