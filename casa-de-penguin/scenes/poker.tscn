@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://be1hxx8qs8ilq"]
+
+[ext_resource type="Script" uid="uid://caws86ti4ynop" path="res://scripts/poker.gd" id="1_qoub5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qoub5"]
+size = Vector2(30, 222)
+
+[node name="Poker" type="CharacterBody2D"]
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_qoub5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_qoub5")

@@ -11,7 +11,26 @@ config_version=5
 [application]
 
 config/name="Casa de Penguin"
-run/main_scene="uid://dm00hdsb8yor3"
+run/main_scene="uid://bjeek4rb56exk"
+config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+ProgresBar="*res://Scripts/progres Bar.gd"
+GlobalCanvasLayer="*res://Scenes/canvas_layer.tscn"
+PauseMenu="*res://Scenes/pause_menu.tscn"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
+[global_group]
+
+coal=""
+ring=""
+run/main_scene="uid://d3yxwak4tgxpc"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
