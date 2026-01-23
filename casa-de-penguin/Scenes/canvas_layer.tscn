@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dedj8o1esev63"]
+[gd_scene load_steps=4 format=3 uid="uid://bp3nqsg0gmuwo"]
 
-[ext_resource type="Script" path="res://Scenes/texture_progress_bar.gd" id="2_p1mel"]
+[ext_resource type="Script" uid="uid://bj22tb5jjup07" path="res://Scenes/texture_progress_bar.gd" id="2_p1mel"]
 
 [sub_resource type="Gradient" id="Gradient_5oaki"]
 offsets = PackedFloat32Array(0, 0.5648148, 1)

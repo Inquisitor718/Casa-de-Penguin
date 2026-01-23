@@ -18,6 +18,13 @@ func _ready() -> void:
 
 	points = floor(100.0 * ((1.5 - min(1.5, abs(snowman_pos.rotation))) / 1.5))
 	print(points)
+	
+func _rotate(rotate_step)->void:
+	target_rot = clamp(
+	target_rot + rotate_step,
+	-1.5,
+	1.5
+	)
 
 func _rotate(step: float) -> void:
 	target_rot = snowman_pos.rotation

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc8uhrey8qc28"]
+
+[ext_resource type="Script" uid="uid://064f8712j4gr" path="res://Scripts/coal.gd" id="1_tqxuk"]
+[ext_resource type="Texture2D" uid="uid://vaivugxeyjij" path="res://assets/stock-vector-coal-vector-icon-for-game-interface-simple-sprite-for-interface-can-be-used-like-craft-element-1939904764-removebg-preview.png" id="2_7w8tp"]
+[ext_resource type="AudioStream" uid="uid://bibb8wp3vylq8" path="res://assets/hit-rock-02-266304.wav" id="3_g465f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tqxuk"]
+radius = 70.0
+
+[node name="Coal" type="RigidBody2D" groups=["coal"]]
+collision_layer = 2
+collision_mask = 7
+gravity_scale = 0.0
+inertia = 1.0
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp = 0.5
+angular_damp = 0.5
+script = ExtResource("1_tqxuk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1.500001, 10.999992)
+scale = Vector2(0.5309918, 0.50775194)
+texture = ExtResource("2_7w8tp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tqxuk")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_g465f")
+volume_db = -6.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
