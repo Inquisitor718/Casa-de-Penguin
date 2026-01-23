@@ -1,9 +1,8 @@
 extends Node2D
 
-@export var mainscene_transisiton: PackedScene
+@export var home: PackedScene
 @export var fish_interval := 6.0      
 @export var reel_interval := 5.0     
-
 @export var click_gain := 12.5
 
 # Difficulty tuning
@@ -14,6 +13,8 @@ extends Node2D
 var IsFish := false
 var decay_block_time := 0.0
 
+@onready var timer = $Timer
+@onready var progress_bar = $CanvasLayer/TextureProgressBar
 @onready var rod: AnimatedSprite2D = $AnimatedSprite2D
 @onready var reel: TextureProgressBar = $reel
 
@@ -45,6 +46,8 @@ func fish_on_hook() -> void:
 	print("fish ended")
 
 func _process(delta: float) -> void:
+	progress_bar.max_value= timer.wait_time
+	progress_bar.value=timer.time_left
 	if not IsFish:
 		return
 
@@ -71,4 +74,4 @@ func _on_texture_button_pressed() -> void:
 
 
 func _on_timer_timeout() -> void:
-	get_tree().change_scene_to_packed(mainscene_transisiton)
+	get_tree().change_scene_to_packed(home)

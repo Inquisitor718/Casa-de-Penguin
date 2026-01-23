@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://1v76j3t52gdp"]
+
+[ext_resource type="Script" uid="uid://bdivaq32uc6dp" path="res://home.gd" id="1_1ey7h"]
+[ext_resource type="PackedScene" uid="uid://dm00hdsb8yor3" path="res://Scenes/Snowman.tscn" id="2_o1ld7"]
+[ext_resource type="PackedScene" uid="uid://dpadm7edd2eb0" path="res://Scenes/Pond.tscn" id="3_2ayvv"]
+[ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="3_o1ld7"]
+[ext_resource type="PackedScene" uid="uid://bjeek4rb56exk" path="res://Scenes/fire_place.tscn" id="4_lxycn"]
+[ext_resource type="PackedScene" uid="uid://b47dnlbyly1av" path="res://Scenes/kitchen.tscn" id="5_vqw7c"]
+
+[sub_resource type="Gradient" id="Gradient_2ayvv"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w1mvj"]
+gradient = SubResource("Gradient_2ayvv")
+
+[node name="Home" type="Node2D"]
+script = ExtResource("1_1ey7h")
+Snowman = ExtResource("2_o1ld7")
+Pond = ExtResource("3_2ayvv")
+Fireplace = ExtResource("4_lxycn")
+Kitchen = ExtResource("5_vqw7c")
+
+[node name="Snowman Button" type="TextureButton" parent="."]
+offset_left = 1549.0
+offset_top = 169.0
+offset_right = 1714.0
+offset_bottom = 315.0
+texture_normal = ExtResource("3_o1ld7")
+
+[node name="Pond Button" type="TextureButton" parent="."]
+offset_left = 1347.0
+offset_top = 823.0
+offset_right = 1571.0
+offset_bottom = 863.0
+texture_normal = ExtResource("3_o1ld7")
+
+[node name="Fireplace" type="TextureButton" parent="."]
+offset_left = 664.0
+offset_top = 167.0
+offset_right = 979.0
+offset_bottom = 309.0
+texture_normal = ExtResource("3_o1ld7")
+
+[node name="Kitchen" type="TextureButton" parent="."]
+offset_left = 448.0
+offset_top = 570.0
+offset_right = 770.0
+offset_bottom = 846.0
+texture_normal = SubResource("GradientTexture2D_w1mvj")
+
+[node name="Penguin1" type="Sprite2D" parent="."]
+position = Vector2(863, 501)
+texture = ExtResource("3_o1ld7")
+
+[node name="Penguin2" type="Sprite2D" parent="."]
+position = Vector2(1055, 501)
+texture = ExtResource("3_o1ld7")
+
+[connection signal="pressed" from="Snowman Button" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Pond Button" to="." method="_on_pond_button_pressed"]
+[connection signal="pressed" from="Fireplace" to="." method="_on_fireplace_pressed"]
+[connection signal="pressed" from="Kitchen" to="." method="_on_kitchen_pressed"]

@@ -2,6 +2,7 @@ extends Node2D
 
 @export var coal_scene: PackedScene
 @export var coal_count := 30
+@export var home: PackedScene
 
 @onready var bar : TextureProgressBar = $TimerBar
 @onready var ring = $FireRing
@@ -96,3 +97,10 @@ func show_floating_text(text: String, position: Vector2, color: Color):
 	tween.tween_property(label, "modulate:a", 0.0, 0.6)
 
 	tween.finished.connect(label.queue_free)
+
+
+
+
+
+func _on_change_to_main_timer_timeout() -> void:
+	get_tree().change_scene_to_packed(home)

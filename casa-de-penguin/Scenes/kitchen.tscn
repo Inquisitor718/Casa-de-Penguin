@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b47dnlbyly1av"]
+[gd_scene load_steps=3 format=3 uid="uid://b47dnlbyly1av"]
 
 [ext_resource type="PackedScene" uid="uid://bs2ynfyt0nf3y" path="res://Scenes/fish.tscn" id="2_23qos"]
+[ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="3_6pjjr"]
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [134.0]
@@ -10,8 +11,18 @@ metadata/_edit_vertical_guides_ = [871.0]
 position = Vector2(870, 129)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 15.0
 one_shot = true
 autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 1591.0
+offset_top = 120.0
+offset_right = 1719.0
+offset_bottom = 248.0
+value = 100.0
+texture_progress = ExtResource("3_6pjjr")
 
 [connection signal="timeout" from="Timer" to="Node2D" method="_on_timer_timeout"]

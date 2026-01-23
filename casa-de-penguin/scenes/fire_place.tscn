@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjeek4rb56exk"]
+[gd_scene load_steps=12 format=3 uid="uid://bjeek4rb56exk"]
 
 [ext_resource type="Script" uid="uid://ca4amg4wlm3e6" path="res://Scripts/fire_place.gd" id="1_7gyp6"]
 [ext_resource type="Script" uid="uid://bb1opt4ah3ilm" path="res://Scripts/fire_ring.gd" id="2_6tqpe"]
 [ext_resource type="PackedScene" uid="uid://be1hxx8qs8ilq" path="res://Scenes/poker.tscn" id="2_7gyp6"]
 [ext_resource type="PackedScene" uid="uid://cc8uhrey8qc28" path="res://Scenes/coal.tscn" id="2_x4ixd"]
+[ext_resource type="PackedScene" uid="uid://1v76j3t52gdp" path="res://home.tscn" id="3_ehpc3"]
 [ext_resource type="Texture2D" uid="uid://0l78rg8613eq" path="res://assets/198114-906539891_tiny-removebg-preview.png" id="5_e5wvw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5wvw"]
@@ -24,6 +25,7 @@ size = Vector2(1831, 977)
 [node name="FirePlace" type="Node2D"]
 script = ExtResource("1_7gyp6")
 coal_scene = ExtResource("2_x4ixd")
+home = ExtResource("3_ehpc3")
 
 [node name="Background" type="Sprite2D" parent="."]
 visible = false
@@ -94,6 +96,12 @@ offset_bottom = 147.0
 value = 100.0
 texture_progress = ExtResource("5_e5wvw")
 
+[node name="Change to main timer" type="Timer" parent="."]
+wait_time = 25.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="FireRing" to="FireRing" method="_on_body_entered"]
 [connection signal="body_exited" from="FireRing" to="FireRing" method="_on_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Change to main timer" to="." method="_on_change_to_main_timer_timeout"]

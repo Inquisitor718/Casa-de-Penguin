@@ -3,8 +3,8 @@ extends Node
 
 var fish_count: int = 4
 var hot_choco: int = 2
+var Comfy_Points: int = 0
 
-var Comfy_Points
 var MaxEnergy : float= 100.0
 var Current_Energy : float = 100.0
 var Decay_Rate : float = 0.5 

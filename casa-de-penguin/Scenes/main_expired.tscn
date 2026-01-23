@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://26n3qaq1gt81" path="res://Scenes/Penguin.tscn" id="8_344ge"]
 [ext_resource type="PackedScene" uid="uid://bs2ynfyt0nf3y" path="res://Scenes/fish.tscn" id="8_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://bjeek4rb56exk" path="res://Scenes/fire_place.tscn" id="9_6iyac"]
-[ext_resource type="PackedScene" uid="uid://dpadm7edd2eb0" path="res://Pond.tscn" id="10_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://dpadm7edd2eb0" path="res://Scenes/Pond.tscn" id="10_fdnlq"]
 
 [sub_resource type="PackedScene" id="PackedScene_fdnlq"]
 _bundled = {
