@@ -1,17 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://b47dnlbyly1av"]
 
-[ext_resource type="PackedScene" uid="uid://bs2ynfyt0nf3y" path="res://Scenes/fish.tscn" id="2_23qos"]
+[ext_resource type="PackedScene" uid="uid://dqkdmfcj41bim" path="res://Scenes/Chain.tscn" id="1_7u47w"]
 
 [node name="Node2D" type="Node2D"]
-metadata/_edit_horizontal_guides_ = [134.0]
-metadata/_edit_vertical_guides_ = [871.0]
-
-[node name="Node2D" parent="." instance=ExtResource("2_23qos")]
-position = Vector2(870, 129)
+metadata/_edit_horizontal_guides_ = [797.0]
+metadata/_edit_vertical_guides_ = [1601.0]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0
 one_shot = true
 autostart = true
 
-[connection signal="timeout" from="Timer" to="Node2D" method="_on_timer_timeout"]
+[node name="Chain" parent="." instance=ExtResource("1_7u47w")]
+position = Vector2(1600, 200)
