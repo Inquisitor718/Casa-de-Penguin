@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dm00hdsb8yor3"]
 
 [ext_resource type="Script" uid="uid://n33x4211tglc" path="res://Scripts/snowman.gd" id="1_6m2of"]
-[ext_resource type="PackedScene" uid="uid://d3yxwak4tgxpc" path="res://Scenes/main.tscn" id="2_0exg2"]
+[ext_resource type="PackedScene" uid="uid://bs2ynfyt0nf3y" path="res://Scenes/fish.tscn" id="2_0exg2"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="2_8nwud"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hol4"]
