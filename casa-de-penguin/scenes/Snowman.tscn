@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bs2ynfyt0nf3y" path="res://Scenes/fish.tscn" id="2_0exg2"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="2_8nwud"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_lbn13"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hol4"]
 radius = 23.086792
 
@@ -14,8 +16,13 @@ distance = -550.0
 script = ExtResource("1_6m2of")
 mainscene_transition = ExtResource("2_0exg2")
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(957.74994, 544.25)
+scale = Vector2(1912.4999, 1089.5)
+texture = SubResource("CanvasTexture_lbn13")
+
 [node name="snowman_pos" type="Marker2D" parent="."]
-position = Vector2(578, 490)
+position = Vector2(976, 715)
 
 [node name="Area2D" type="Area2D" parent="snowman_pos"]
 
@@ -33,7 +40,7 @@ texture = ExtResource("2_8nwud")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(575, -19)
+position = Vector2(983, 222)
 shape = SubResource("WorldBoundaryShape2D_0e48y")
 
 [node name="Timer" type="Timer" parent="."]
