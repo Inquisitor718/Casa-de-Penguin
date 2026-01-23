@@ -1,6 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b47dnlbyly1av"]
-
-[ext_resource type="PackedScene" uid="uid://dqkdmfcj41bim" path="res://Scenes/Chain.tscn" id="1_7u47w"]
+[gd_scene format=3 uid="uid://b47dnlbyly1av"]
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [797.0]
@@ -19,6 +17,3 @@ offset_top = 120.0
 offset_right = 1719.0
 offset_bottom = 248.0
 value = 100.0
-texture_progress = ExtResource("3_6pjjr")
-
-[connection signal="timeout" from="Timer" to="Node2D" method="_on_timer_timeout"]
