@@ -1,11 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://1v76j3t52gdp"]
+[gd_scene load_steps=5 format=3 uid="uid://1v76j3t52gdp"]
 
 [ext_resource type="Script" uid="uid://bdivaq32uc6dp" path="res://home.gd" id="1_1ey7h"]
-[ext_resource type="PackedScene" uid="uid://dm00hdsb8yor3" path="res://Scenes/Snowman.tscn" id="2_o1ld7"]
-[ext_resource type="PackedScene" uid="uid://dpadm7edd2eb0" path="res://Scenes/Pond.tscn" id="3_2ayvv"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="3_o1ld7"]
-[ext_resource type="PackedScene" uid="uid://bjeek4rb56exk" path="res://Scenes/fire_place.tscn" id="4_lxycn"]
-[ext_resource type="PackedScene" uid="uid://b47dnlbyly1av" path="res://Scenes/kitchen.tscn" id="5_vqw7c"]
 
 [sub_resource type="Gradient" id="Gradient_2ayvv"]
 
@@ -14,10 +10,6 @@ gradient = SubResource("Gradient_2ayvv")
 
 [node name="Home" type="Node2D"]
 script = ExtResource("1_1ey7h")
-Snowman = ExtResource("2_o1ld7")
-Pond = ExtResource("3_2ayvv")
-Fireplace = ExtResource("4_lxycn")
-Kitchen = ExtResource("5_vqw7c")
 
 [node name="Snowman Button" type="TextureButton" parent="."]
 offset_left = 1549.0
