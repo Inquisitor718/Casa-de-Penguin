@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djvirrobmke7h" path="res://Pond.gd" id="1_4nafw"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="2_mck8p"]
-[ext_resource type="PackedScene" uid="uid://d3yxwak4tgxpc" path="res://Scenes/main.tscn" id="2_n1mv4"]
+[ext_resource type="PackedScene" uid="uid://bs2ynfyt0nf3y" path="res://Scenes/fish.tscn" id="2_n1mv4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4nafw"]
 atlas = ExtResource("2_mck8p")

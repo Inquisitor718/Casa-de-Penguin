@@ -4,10 +4,11 @@ extends RigidBody2D
 @export var k := 0.5
 @export var base_radius := 90 # 👈 You tweak this manually
 @onready var marker_2d: Marker2D = $Marker2D
+@onready var hit_sound: AudioStreamPlayer2D = $HitSound
 
 var ring_radius := 0.0
 var calm_radius := 0.0
-
+var can_play := true
 var ring: Area2D
 
 
@@ -47,3 +48,12 @@ func _integrate_forces(state):
 		var strength =  (k) * t
 
 		state.apply_central_impulse(dir * strength)
+
+
+func _on_body_entered(body):
+	if body.name == "Poker" and can_play:
+		$HitSound.play()
+		can_play = false
+		await get_tree().create_timer(0.1).timeout
+		can_play = true
+	
