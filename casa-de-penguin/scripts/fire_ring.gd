@@ -7,10 +7,13 @@ signal score_changed(new_score: int)
 @export var max_radius := 500.0
 @export var max_coals_for_full_size := 15
 @onready var force_center: Marker2D = $ForceCenter
+@onready var enter_sound: AudioStreamPlayer2D = $EnterSound
 
 @onready var collision := $CollisionShape2D
 @onready var circle := collision.shape as CircleShape2D
 @onready var ring: CollisionShape2D = $CollisionShape2D
+
+var can_play := true
 
 func get_ring_radius():
 	var rad = (ring.shape as CircleShape2D).radius
@@ -34,6 +37,7 @@ func _on_body_entered(body):
 	#var dist = body.global_position.distance_to(force_center.global_position) *0.25
 	#print ("IN distance is", dist)
 	if body.is_in_group("coal"):
+		$EnterSound.play()
 		score += 1
 		emit_signal("score_changed", score)
 
