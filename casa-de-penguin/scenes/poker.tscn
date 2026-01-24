@@ -4,19 +4,36 @@
 [ext_resource type="Texture2D" uid="uid://co6aa1snep4vf" path="res://assets/black-metal-fireplace-poker-tool-claw-fork-ends-managing-embers-logs-safely-classic-featuring-dual-purpose-design-401596690-removebg-preview.png" id="2_3xkfc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qoub5"]
-size = Vector2(30, 222)
+size = Vector2(30.565079, 167.83566)
 
 [node name="Poker" type="CharacterBody2D" groups=["poker"]]
+rotation = 3.1415927
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_qoub5")
 
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(8.153128, -25.000002)
+rotation = -2.2485054
+scale = Vector2(0.58809346, 0.58809346)
+shape = SubResource("RectangleShape2D_qoub5")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5707964
+position = Vector2(-109.84686, -9.603118e-06)
+rotation = -1.5707963
 shape = SubResource("RectangleShape2D_qoub5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3.965312, -4.638753)
-rotation = 0.5952539
-scale = Vector2(0.45665848, 0.4462317)
+position = Vector2(-242.84686, 4.638733)
+rotation = -2.5463388
+scale = Vector2(1.3239725, 1.2937424)
 texture = ExtResource("2_3xkfc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(4.127759, 36.241898)
+rotation = -0.53849626
+scale = Vector2(0.5880935, 0.5880935)
+shape = SubResource("RectangleShape2D_qoub5")
+
+[node name="Node2D" type="Node2D" parent="."]
+rotation = 3.1415927

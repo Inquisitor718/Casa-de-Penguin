@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var coal_scene: PackedScene
-@export var coal_count := 30
+@export var coal_count := 45
 @export var home: PackedScene
 
 @onready var bar : TextureProgressBar = $TimerBar

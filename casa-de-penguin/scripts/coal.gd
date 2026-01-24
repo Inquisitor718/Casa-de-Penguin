@@ -10,7 +10,7 @@ var ring_radius := 0.0
 var calm_radius := 0.0
 var can_play := true
 var ring: Area2D
-
+@export var neutral_radius := 50.0
 
 func _ready():
 	gravity_scale = 0
@@ -41,7 +41,7 @@ func _integrate_forces(state):
 	var pos = state.transform.origin
 	var dist = pos.distance_to(center)
 
-	if dist < calm_radius:
+	if dist < calm_radius and dist > neutral_radius:
 		var dir = (pos - center).normalized()
 #calm_radius - 
 		var t = calm_radius - dist

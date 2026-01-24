@@ -58,7 +58,6 @@ fill_from = Vector2(0, 0.023364486)
 [node name="FirePlace" type="Node2D"]
 script = ExtResource("1_7gyp6")
 coal_scene = ExtResource("2_x4ixd")
-home = ExtResource("3_ehpc3")
 
 [node name="FireRing" type="Area2D" parent="." groups=["ring"]]
 collision_layer = 0
@@ -84,7 +83,8 @@ volume_db = -5.0
 
 [node name="Poker" parent="." instance=ExtResource("2_7gyp6")]
 z_index = 1
-position = Vector2(-157, -53)
+position = Vector2(1370, 596)
+rotation = 0.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 25.0
