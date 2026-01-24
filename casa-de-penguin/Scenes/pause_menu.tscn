@@ -11,13 +11,19 @@ process_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -30.0
-offset_top = 8.0
-offset_right = -7.0
-offset_bottom = 46.0
+offset_left = -104.0
+offset_top = 40.0
+offset_right = -34.0
+offset_bottom = 117.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 50
 text = "II"
+
+[node name="DimBackground" type="ColorRect" parent="."]
+offset_right = 1922.0
+offset_bottom = 1076.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.4509804)
 
 [node name="PausePanel" type="Control" parent="."]
 process_mode = 3
@@ -33,16 +39,27 @@ offset_right = 145.0
 offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ResumeButton" type="Button" parent="PausePanel"]
 process_mode = 3
 layout_mode = 0
-offset_left = 55.0
+offset_left = -8.0
 offset_top = 26.0
-offset_right = 192.0
+offset_right = 292.0
 offset_bottom = 121.0
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 50
 text = "Resume"
+
+[node name="MainMenu" type="Button" parent="PausePanel"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 137.0
+offset_right = 285.0
+offset_bottom = 214.0
+theme_override_font_sizes/font_size = 50
+text = "Main Menu"
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PausePanel/MainMenu" to="." method="_on_main_menu_pressed"]

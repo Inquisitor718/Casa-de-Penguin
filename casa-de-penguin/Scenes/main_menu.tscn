@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://coeleyxyupegd"]
+
+[ext_resource type="Script" uid="uid://cpatuh8306eyv" path="res://Scripts/main_menu.gd" id="1_28flt"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_28flt")
+
+[node name="Title" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 683.0
+offset_top = 274.0
+offset_right = 1113.0
+offset_bottom = 387.0
+theme_override_font_sizes/font_size = 50
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 690.0
+offset_top = 456.0
+offset_right = 1112.0
+offset_bottom = 562.0
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
