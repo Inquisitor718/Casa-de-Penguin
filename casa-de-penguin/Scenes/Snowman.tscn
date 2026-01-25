@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm00hdsb8yor3"]
+[gd_scene load_steps=8 format=3 uid="uid://dm00hdsb8yor3"]
 
-[ext_resource type="Script" uid="uid://n33x4211tglc" path="res://Scripts/snowman.gd" id="1_6m2of"]
+[ext_resource type="Script" uid="uid://n33x4211tglc" path="res://Scripts/lundsnowman.gd" id="1_6m2of"]
+[ext_resource type="PackedScene" uid="uid://dqkdmfcj41bim" path="res://Scenes/Chain.tscn" id="2_0exg2"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="2_8nwud"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_lbn13"]
@@ -33,6 +34,7 @@ turbulence_noise_speed_random = 0.8
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_6m2of")
+home = ExtResource("2_0exg2")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(957.74994, 544.25)
@@ -66,11 +68,9 @@ wait_time = 15.0
 one_shot = true
 autostart = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Camera2D/CanvasLayer"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
 offset_left = 1311.0
 offset_top = 86.0
 offset_right = 1439.0
@@ -84,5 +84,8 @@ scale = Vector2(-4.5192804, -8.217786)
 amount = 600
 lifetime = 50.0
 process_material = SubResource("ParticleProcessMaterial_lbn13")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(957, 540)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

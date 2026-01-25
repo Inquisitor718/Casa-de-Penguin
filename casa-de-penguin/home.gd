@@ -27,6 +27,7 @@ var dragging = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
+	
 	place_fish_and_coco()
 	ProgresBar.Decay_Rate = 0.5
 	camera_2d.global_position=Vector2(963,542)
@@ -80,23 +81,26 @@ func _on_texture_button_2_pressed() -> void:
 #func _on_kitchen_pressed() -> void:
 	#get_tree().change_scene_to_packed(kitchen)
 
+
 func _on_snowman_button_pressed() -> void:
 	var tween_snowman_move := create_tween()
+	var tween_snowman_zoom := create_tween()
+	
+	tween_snowman_zoom.tween_property(
+		camera_2d,
+		"zoom",
+		Vector2(1922/snowman_button.size.x,1078/snowman_button.size.y),
+		0.5
+	).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
 	tween_snowman_move.tween_property(
 		camera_2d,
 		"global_position",
 		Vector2(1633,241),
-		0.5
+		0.37
 		
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-	
-	var tween_snowman_zoom := create_tween()
-	tween_snowman_zoom.tween_property(
-		camera_2d,
-		"zoom",
-		Vector2(1922/snowman_button.rect_size.x,1078/snowman_button.rect_size.y),
-		0.5
-	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	await tween_snowman_zoom.finished
+	get_tree().change_scene_to_packed(Snowman)
 	
 	
 
