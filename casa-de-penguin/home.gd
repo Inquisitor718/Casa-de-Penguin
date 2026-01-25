@@ -24,11 +24,10 @@ var dragging = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-<<<<<<< HEAD
+
 	place_fish_and_coco()
-=======
 	ProgresBar.Decay_Rate = 0.5
->>>>>>> 5bdeb5aeee44c4bea227369fee49ce8f92eee882
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,7 +36,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-<<<<<<< HEAD
+
 func place_fish_and_coco():
 	
 	for i in range(fish): 
@@ -65,20 +64,20 @@ func _on_texture_button_2_pressed() -> void:
 
 
 #transition to different rooms
+#
+#func _on_snowman_button_pressed() -> void:
+	#get_tree().change_scene_to_packed(Snowman)
+#
+#
+#func _on_pond_button_pressed() -> void:
+	#get_tree().change_scene_to_packed(Pond)
+#
+#func _on_fireplace_pressed() -> void:
+	#get_tree().change_scene_to_packed(fire_place)
+#
+#func _on_kitchen_pressed() -> void:
+	#get_tree().change_scene_to_packed(kitchen)
 
-func _on_snowman_button_pressed() -> void:
-	get_tree().change_scene_to_packed(Snowman)
-
-
-func _on_pond_button_pressed() -> void:
-	get_tree().change_scene_to_packed(Pond)
-
-func _on_fireplace_pressed() -> void:
-	get_tree().change_scene_to_packed(fire_place)
-
-func _on_kitchen_pressed() -> void:
-	get_tree().change_scene_to_packed(kitchen)
-=======
 func _on_snowman_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Snowman.tscn")
 
@@ -93,4 +92,3 @@ func _on_fireplace_pressed() -> void:
 
 func _on_kitchen_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/kitchen.tscn")
->>>>>>> 5bdeb5aeee44c4bea227369fee49ce8f92eee882
