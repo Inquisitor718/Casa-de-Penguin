@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://1v76j3t52gdp"]
+[gd_scene load_steps=9 format=3 uid="uid://1v76j3t52gdp"]
 
 [ext_resource type="Script" uid="uid://bdivaq32uc6dp" path="res://home.gd" id="1_1ey7h"]
 [ext_resource type="PackedScene" uid="uid://bs2ynfyt0nf3y" path="res://Scenes/fish.tscn" id="2_86xni"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="3_o1ld7"]
 [ext_resource type="PackedScene" uid="uid://2xen71bnxsnk" path="res://Scenes/HotCoco.tscn" id="3_qq0qw"]
+[ext_resource type="PackedScene" uid="uid://dm00hdsb8yor3" path="res://Scenes/Snowman.tscn" id="4_86xni"]
 [ext_resource type="PackedScene" uid="uid://b47dnlbyly1av" path="res://Scenes/kitchen.tscn" id="5_tdh31"]
 [ext_resource type="PackedScene" uid="uid://bjeek4rb56exk" path="res://Scenes/fire_place.tscn" id="6_x0ehs"]
 [ext_resource type="PackedScene" uid="uid://dpadm7edd2eb0" path="res://Pond.tscn" id="7_rdsdt"]
@@ -12,6 +13,7 @@
 script = ExtResource("1_1ey7h")
 fish_scene = ExtResource("2_86xni")
 hot_choco = ExtResource("3_qq0qw")
+Snowman = ExtResource("4_86xni")
 kitchen = ExtResource("5_tdh31")
 fire_place = ExtResource("6_x0ehs")
 Pond = ExtResource("7_rdsdt")

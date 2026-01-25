@@ -1,18 +1,26 @@
 extends Node2D
 
-@export var mainscene_transition: PackedScene
+
 @export var points: int
 
 @onready var snowman_pos: Marker2D = $snowman_pos
+@onready var snowfall: GPUParticles2D = $Snowfall
+
+
+@export var home: PackedScene
+@onready var timer = $Timer
+@onready var progress_bar = $CanvasLayer/TextureProgressBar
 
 var timeout := 0
 var target_rot := 0.0
 var duration := 0.12
 var holding := false
 
+
 func _ready() -> void:
 	target_rot = snowman_pos.rotation
-
+	snowfall.preprocess = 100
+	snowfall.emitting = true
 	await get_tree().create_timer(15.0).timeout
 	timeout = 1
 
@@ -33,7 +41,8 @@ func _rotate(step: float) -> void:
 
 func _process(delta: float) -> void:
 	var wind := -0.3
-
+	progress_bar.max_value= timer.wait_time
+	progress_bar.value=timer.time_left
 	if timeout == 0:
 		snowman_pos.rotation = clamp(snowman_pos.rotation + wind * delta, -1.5, 1.5)
 
@@ -46,5 +55,6 @@ func _process(delta: float) -> void:
 			else:
 				_rotate(0.02)
 
+
 func _on_timer_timeout() -> void:
-	get_tree().change_scene_to_packed(mainscene_transition)
+	get_tree().change_scene_to_packed(home)

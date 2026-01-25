@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm00hdsb8yor3"]
+[gd_scene load_steps=8 format=3 uid="uid://dm00hdsb8yor3"]
 
 [ext_resource type="Script" uid="uid://n33x4211tglc" path="res://Scripts/snowman.gd" id="1_6m2of"]
+[ext_resource type="PackedScene" uid="uid://1v76j3t52gdp" path="res://home.tscn" id="2_0exg2"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="2_8nwud"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_lbn13"]
@@ -33,6 +34,7 @@ turbulence_noise_speed_random = 0.8
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_6m2of")
+home = ExtResource("2_0exg2")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(957.74994, 544.25)
@@ -82,5 +84,8 @@ scale = Vector2(-4.5192804, -8.217786)
 amount = 600
 lifetime = 50.0
 process_material = SubResource("ParticleProcessMaterial_lbn13")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(957, 540)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
