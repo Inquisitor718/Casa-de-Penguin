@@ -9,6 +9,7 @@ extends Node2D
 @export var decay_factor := 2
 @export var grace_time := 0.12
 @export var grace_multiplier := 0.3
+@onready var snowfall: GPUParticles2D = $Snowfall
 
 var IsFish := false
 var decay_block_time := 0.0
@@ -21,6 +22,8 @@ var decay_block_time := 0.0
 
 func _ready() -> void:
 	start_fishing_loop()
+	snowfall.preprocess = 100
+	snowfall.emitting = true
 
 func start_fishing_loop() -> void:
 	while true:

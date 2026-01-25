@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dm00hdsb8yor3"]
 
 [ext_resource type="Script" uid="uid://n33x4211tglc" path="res://Scripts/lundsnowman.gd" id="1_6m2of"]
-[ext_resource type="PackedScene" uid="uid://dqkdmfcj41bim" path="res://Scenes/Chain.tscn" id="2_0exg2"]
+[ext_resource type="PackedScene" uid="uid://1v76j3t52gdp" path="res://home.tscn" id="2_0exg2"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="2_8nwud"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_lbn13"]
