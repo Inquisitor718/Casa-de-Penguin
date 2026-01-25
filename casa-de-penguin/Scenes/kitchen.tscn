@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b47dnlbyly1av"]
+[gd_scene load_steps=6 format=3 uid="uid://b47dnlbyly1av"]
 
 [ext_resource type="PackedScene" uid="uid://dqkdmfcj41bim" path="res://Scenes/Chain.tscn" id="1_7u47w"]
 [ext_resource type="PackedScene" uid="uid://drb24jw755fx" path="res://Scenes/button.tscn" id="2_23qos"]
+[ext_resource type="Script" uid="uid://cians5eyq5dvk" path="res://Scenes/chainkitchen.gd" id="2_pb1w8"]
+[ext_resource type="Script" uid="uid://7mphysv3dhic" path="res://Scenes/cup_2.gd" id="4_6pjjr"]
+[ext_resource type="Script" uid="uid://6rvqrrvd8fao" path="res://Scenes/cup_1.gd" id="4_jbuf1"]
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [797.0]
@@ -9,6 +12,15 @@ metadata/_edit_vertical_guides_ = [1601.0]
 
 [node name="Node2D" parent="." instance=ExtResource("1_7u47w")]
 position = Vector2(1600, 180)
+script = ExtResource("2_pb1w8")
 
 [node name="Button" parent="." instance=ExtResource("2_23qos")]
 position = Vector2(380, 655)
+
+[node name="cup1" type="Node2D" parent="."]
+position = Vector2(1573, 928)
+script = ExtResource("4_jbuf1")
+
+[node name="cup2" type="Node2D" parent="."]
+position = Vector2(349, 943)
+script = ExtResource("4_6pjjr")
