@@ -2,7 +2,7 @@ extends Node2D
 
 @export var zoom:=0
 @export var points: int
-@export var home: PackedScene
+
 @onready var snowman_pos: Marker2D = $snowman_pos
 @onready var snowfall: GPUParticles2D = $Snowfall
 

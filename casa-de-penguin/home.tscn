@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dm00hdsb8yor3" path="res://Scenes/Snowman.tscn" id="4_86xni"]
 [ext_resource type="PackedScene" uid="uid://b47dnlbyly1av" path="res://Scenes/kitchen.tscn" id="5_tdh31"]
 [ext_resource type="PackedScene" uid="uid://bjeek4rb56exk" path="res://Scenes/fire_place.tscn" id="6_x0ehs"]
-[ext_resource type="PackedScene" uid="uid://dpadm7edd2eb0" path="res://Pond.tscn" id="7_rdsdt"]
+[ext_resource type="PackedScene" uid="uid://dpadm7edd2eb0" path="res://BekarPond.tscn" id="7_rdsdt"]
 
 [node name="Home" type="Node2D"]
 script = ExtResource("1_1ey7h")
@@ -51,14 +51,6 @@ position = Vector2(875, 744)
 
 [node name="table_coco" type="Marker2D" parent="."]
 position = Vector2(885, 838)
-
-[node name="Penguin" parent="." instance=ExtResource("8_86xni")]
-position = Vector2(978, 440.00003)
-scale = Vector2(1.7926829, 1.7926829)
-
-[node name="Penguin2" parent="." instance=ExtResource("8_86xni")]
-position = Vector2(1284, 446)
-scale = Vector2(1.7926829, 1.7926829)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(961, 539)
