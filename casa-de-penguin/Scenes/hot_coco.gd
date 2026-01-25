@@ -2,6 +2,7 @@ extends Area2D
 @onready var fish: Area2D = $"."
 @onready var hot_coco: Area2D = $"."
 
+var comfy_points= 0.0
 var dragging = false
 var mouse_offset := Vector2.ZERO
 
@@ -23,7 +24,7 @@ func _input(event):
 			dragging = false
 			print("drag released")
 			if inside_penguin:
-				ProgresBar.add_energy(10.0)
+				ProgresBar.add_energy(comfy_points)
 				print("Dropped inside Penguin Area!")
 				queue_free()
 

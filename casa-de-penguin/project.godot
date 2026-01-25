@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 ProgresBar="*res://Scripts/progres Bar.gd"
 GlobalCanvasLayer="*res://Scenes/canvas_layer.tscn"
 PauseMenu="*res://Scenes/pause_menu.tscn"
+HotCoco="*res://Scenes/hot_coco.gd"
 
 [display]
 
