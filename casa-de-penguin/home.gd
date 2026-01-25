@@ -5,15 +5,12 @@ extends Node2D
 @onready var table: Marker2D = $table
 @onready var table_coco: Marker2D = $table_coco
 
-
 @export var fish_scene: PackedScene
 @export var hot_choco: PackedScene
 @export var Snowman: PackedScene
 @export var kitchen: PackedScene
 @export var fire_place: PackedScene
 @export var Pond: PackedScene
-
-
 
 
 var fish= ProgresBar.fish_count
