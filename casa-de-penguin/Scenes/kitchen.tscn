@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b47dnlbyly1av"]
+[gd_scene load_steps=2 format=3 uid="uid://b47dnlbyly1av"]
+
+[ext_resource type="PackedScene" uid="uid://dqkdmfcj41bim" path="res://Scenes/Chain.tscn" id="1_7u47w"]
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [797.0]
@@ -17,3 +19,6 @@ offset_top = 120.0
 offset_right = 1719.0
 offset_bottom = 248.0
 value = 100.0
+
+[node name="Node2D" parent="." instance=ExtResource("1_7u47w")]
+position = Vector2(1600, 180)
