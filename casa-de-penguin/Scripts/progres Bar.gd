@@ -5,8 +5,9 @@ var fish_count: int = 4
 var hot_choco: int = 2
 var Comfy_Points: int = 0
 
-var MaxEnergy : float= 100.0
-var Current_Energy : float = 100.0
+
+@export var MaxEnergy : float= 100.0
+@export var Current_Energy : float = 100.0
 var Decay_Rate : float = 0.5 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +16,23 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	Current_Energy -= Decay_Rate * delta
+	
+	var current_scene = get_tree().current_scene
+	
+	if current_scene == null:
+		return
+	
+	if current_scene.name == "MainMenu": # or current_scene.name == "GameOver":
+		GlobalCanvasLayer.hide()
+		
+	else:
+		GlobalCanvasLayer.show()
+	
+	
+	
+	Current_Energy -= Decay_Rate * delta * 10
+	if Current_Energy <=0 :
+		get_tree().change_scene_to_file("res://Scenes/game_over_ui.tscn")
 
 
 func add_energy(amount: float):
@@ -23,5 +40,8 @@ func add_energy(amount: float):
 	print(Current_Energy)
 	if Current_Energy > MaxEnergy:
 		Current_Energy = MaxEnergy
-	if Current_Energy < 0:
+	if Current_Energy <= 0:
 		Current_Energy = 0
+		
+func reset_energy():
+	Current_Energy = MaxEnergy

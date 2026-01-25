@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var coal_scene: PackedScene
-@export var coal_count := 45
+@export var coal_count := 30
 @export var home: PackedScene
 
 @onready var bar : TextureProgressBar = $TimerBar
@@ -74,11 +74,11 @@ func _on_score_changed(count: int):
 
 
 func _on_timer_timeout():
-	print("Final score:", ring.get_score())
+	print("Final score:", score)
 	get_tree().paused = true
 	await get_tree().create_timer(0.5, true).timeout
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://home.tscn")
 
 func show_floating_text(text: String, position: Vector2, color: Color):
 	var label := Label.new()
@@ -97,10 +97,3 @@ func show_floating_text(text: String, position: Vector2, color: Color):
 	tween.tween_property(label, "modulate:a", 0.0, 0.6)
 
 	tween.finished.connect(label.queue_free)
-
-
-
-
-
-func _on_change_to_main_timer_timeout() -> void:
-	get_tree().change_scene_to_packed(home)

@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt6t6mb0pjeaw"]
+
+[ext_resource type="Script" uid="uid://dmm480pqv2lca" path="res://Scripts/game_over_ui.gd" id="1_vvx4t"]
+
+[node name="GameOver" type="Node2D"]
+z_index = 999
+script = ExtResource("1_vvx4t")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1918.0
+offset_bottom = 1076.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MainMenuButton" type="Button" parent="."]
+offset_left = 744.0
+offset_top = 484.0
+offset_right = 1195.0
+offset_bottom = 561.0
+theme_override_font_sizes/font_size = 50
+text = "Main Menu"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 800.0
+offset_top = 571.0
+offset_right = 1123.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 681.0
+offset_top = 234.0
+offset_right = 1248.0
+offset_bottom = 371.0
+theme_override_font_sizes/font_size = 100
+text = "YOU LOSE"
+
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

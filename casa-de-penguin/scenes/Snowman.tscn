@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dm00hdsb8yor3"]
+[gd_scene load_steps=7 format=3 uid="uid://dm00hdsb8yor3"]
 
 [ext_resource type="Script" uid="uid://n33x4211tglc" path="res://Scripts/snowman.gd" id="1_6m2of"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="2_8nwud"]
@@ -10,6 +10,26 @@ radius = 23.086792
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0e48y"]
 distance = -550.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lbn13"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(600, 10, 1)
+angle_min = 200.00002
+angle_max = 240.00002
+spread = 20.0
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+gravity = Vector3(-150, 120, 0)
+linear_accel_min = -120.0
+linear_accel_max = -60.0
+scale_min = 5.0
+scale_max = 10.0
+color = Color(0.8980392, 0.9490196, 1, 0.8)
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 2.5
+turbulence_noise_speed_random = 0.8
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_6m2of")
@@ -55,5 +75,12 @@ offset_right = 1439.0
 offset_bottom = 214.0
 value = 100.0
 texture_progress = ExtResource("2_8nwud")
+
+[node name="Snowfall" type="GPUParticles2D" parent="."]
+position = Vector2(946, 64)
+scale = Vector2(-4.5192804, -8.217786)
+amount = 600
+lifetime = 50.0
+process_material = SubResource("ParticleProcessMaterial_lbn13")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

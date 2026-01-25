@@ -1,5 +1,6 @@
 extends RigidBody2D
 @onready var coal: RigidBody2D = $"."
+@onready var sprite: Sprite2D = $Sprite2D
 
 @export var k := 0.5
 @export var base_radius := 90 # 👈 You tweak this manually
@@ -10,9 +11,12 @@ var ring_radius := 0.0
 var calm_radius := 0.0
 var can_play := true
 var ring: Area2D
+var heat := 0.0
+var base_color: Color
 @export var neutral_radius := 50.0
 
 func _ready():
+	base_color = sprite.modulate
 	gravity_scale = 0
 	linear_damp = 5
 	angular_damp = 2.0

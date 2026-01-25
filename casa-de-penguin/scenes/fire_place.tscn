@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bjeek4rb56exk"]
+[gd_scene load_steps=35 format=3 uid="uid://bjeek4rb56exk"]
 
 [ext_resource type="Script" uid="uid://ca4amg4wlm3e6" path="res://Scripts/fire_place.gd" id="1_7gyp6"]
 [ext_resource type="Script" uid="uid://bb1opt4ah3ilm" path="res://Scripts/fire_ring.gd" id="2_6tqpe"]
@@ -8,8 +8,68 @@
 [ext_resource type="Texture2D" uid="uid://0l78rg8613eq" path="res://assets/198114-906539891_tiny-removebg-preview.png" id="5_e5wvw"]
 [ext_resource type="AudioStream" uid="uid://8x3n8hyht56e" path="res://assets/match-ignite-165316.wav" id="5_wfl1u"]
 
+[sub_resource type="Gradient" id="Gradient_wbthi"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6akr7"]
+gradient = SubResource("Gradient_wbthi")
+width = 32
+height = 32
+fill = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_11kdb"]
+diffuse_texture = SubResource("GradientTexture2D_6akr7")
+
+[sub_resource type="Gradient" id="Gradient_6akr7"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0.9019608, 0.5882353, 1, 1, 0.47058824, 0.11764706, 1, 0.3137255, 0.078431375, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_11kdb"]
+gradient = SubResource("Gradient_6akr7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_11kdb"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 80.0
+initial_velocity_max = 160.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.25
+scale_max = 0.55
+color_ramp = SubResource("GradientTexture1D_11kdb")
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5wvw"]
 radius = 201.3579
+
+[sub_resource type="Gradient" id="Gradient_11kdb"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0bhkq"]
+gradient = SubResource("Gradient_11kdb")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_b5vlu"]
+diffuse_texture = SubResource("GradientTexture2D_0bhkq")
+
+[sub_resource type="Gradient" id="Gradient_0bhkq"]
+offsets = PackedFloat32Array(0, 0.46226415, 1)
+colors = PackedColorArray(0.3137255, 0.3137255, 0.3137255, 0.47058824, 0.39215687, 0.39215687, 0.39215687, 0.3529412, 0.54901963, 0.54901963, 0.54901963, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b5vlu"]
+gradient = SubResource("Gradient_0bhkq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rj6ad"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(80, 10, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 25.0
+initial_velocity_min = 10.0
+initial_velocity_max = 25.0
+gravity = Vector3(0, -5, 0)
+scale_min = 0.59999996
+scale_max = 0.79999995
+color_ramp = SubResource("GradientTexture1D_b5vlu")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_648hr"]
 size = Vector2(1144.5, 24.5)
@@ -60,17 +120,30 @@ script = ExtResource("1_7gyp6")
 coal_scene = ExtResource("2_x4ixd")
 
 [node name="FireRing" type="Area2D" parent="." groups=["ring"]]
-collision_layer = 0
+collision_layer = 16
 collision_mask = 2
 script = ExtResource("2_6tqpe")
 
+[node name="Sparks" type="GPUParticles2D" parent="FireRing"]
+z_index = 10
+position = Vector2(982, 568)
+emitting = false
+amount = 18
+texture = SubResource("CanvasTexture_11kdb")
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+randomness = 0.4
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_11kdb")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FireRing"]
-position = Vector2(910, 506)
+position = Vector2(979, 520)
 shape = SubResource("CircleShape2D_e5wvw")
 
-[node name="Sprite2D" type="Sprite2D" parent="FireRing/CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="FireRing"]
 z_index = 1
-position = Vector2(57.50002, 35.75002)
+position = Vector2(967.5, 541.75)
 scale = Vector2(1.5600961, 0.92904836)
 texture = ExtResource("4_ehpc3")
 
@@ -80,6 +153,16 @@ position = Vector2(953, 525)
 [node name="EnterSound" type="AudioStreamPlayer2D" parent="FireRing"]
 stream = ExtResource("5_wfl1u")
 volume_db = -5.0
+
+[node name="Smoke" type="GPUParticles2D" parent="FireRing"]
+z_index = 5
+position = Vector2(974, 366)
+amount = 60
+texture = SubResource("CanvasTexture_b5vlu")
+lifetime = 7.0
+randomness = 0.6
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_rj6ad")
 
 [node name="Poker" parent="." instance=ExtResource("2_7gyp6")]
 z_index = 1
