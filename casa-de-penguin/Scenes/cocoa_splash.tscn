@@ -1,11 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://phkumohlu4bw"]
+[gd_scene load_steps=5 format=3 uid="uid://phkumohlu4bw"]
 
+[ext_resource type="Script" uid="uid://d34kemxyqu6q0" path="res://Scripts/cocoa_splash.gd" id="1_bam5p"]
 [ext_resource type="Shader" uid="uid://4tofft052l54" path="res://Scripts/cocoa_splash.gdshader" id="1_ngqhx"]
+[ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="3_mth2k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uuev6"]
 shader = ExtResource("1_ngqhx")
+shader_parameter/chocolate_texture = ExtResource("3_mth2k")
+shader_parameter/fill = 0.0
+shader_parameter/time = 0.0
+shader_parameter/wave_strength = 0.1
+shader_parameter/wave_speed = 6.0
+shader_parameter/texture_scroll_speed = 0.03
+shader_parameter/tint_color = Color(0.35, 0.18, 0.08, 1)
+shader_parameter/gloss_strength = 0.25
 
 [node name="Cocoa Splash" type="CanvasLayer"]
+script = ExtResource("1_bam5p")
 
 [node name="Cocoa" type="ColorRect" parent="."]
 z_index = 100
