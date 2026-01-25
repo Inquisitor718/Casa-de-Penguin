@@ -6,13 +6,13 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	macchi.global_position=Vector2(951,546)
+	camera_2d.global_position=Vector2(-961,542)
 	$macchi.flip_h = true
 	snowfall.preprocess = 96
 	snowfall.emitting = true
 	await get_tree().process_frame
 	await get_tree().process_frame 
-	macchi.global_position=Vector2(951,546)
-	camera_2d.global_position=Vector2(-961,542)
 	var tween_pond :=create_tween()
 	tween_pond.tween_property(
 		macchi,
