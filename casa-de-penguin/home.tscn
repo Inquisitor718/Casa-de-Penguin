@@ -52,6 +52,14 @@ position = Vector2(875, 744)
 [node name="table_coco" type="Marker2D" parent="."]
 position = Vector2(885, 838)
 
+[node name="Penguin" parent="." instance=ExtResource("8_86xni")]
+position = Vector2(978, 440.00003)
+scale = Vector2(1.7926829, 1.7926829)
+
+[node name="Penguin2" parent="." instance=ExtResource("8_86xni")]
+position = Vector2(1284, 446)
+scale = Vector2(1.7926829, 1.7926829)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(961, 539)
 

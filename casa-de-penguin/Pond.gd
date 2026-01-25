@@ -14,7 +14,7 @@ var IsFish := false
 var decay_block_time := 0.0
 
 @onready var timer = $Timer
-@onready var progress_bar = $CanvasLayer/TextureProgressBar
+@onready var progress_bar = $Camera2D/CanvasLayer/TextureProgressBar
 @onready var rod: AnimatedSprite2D = $AnimatedSprite2D
 @onready var reel: TextureProgressBar = $reel
 

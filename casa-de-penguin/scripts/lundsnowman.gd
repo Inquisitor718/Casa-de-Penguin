@@ -2,7 +2,7 @@ extends Node2D
 
 @export var zoom:=0
 @export var points: int
-
+@export var home: PackedScene
 @onready var snowman_pos: Marker2D = $snowman_pos
 @onready var snowfall: GPUParticles2D = $Snowfall
 
@@ -40,6 +40,9 @@ func _rotate(step: float) -> void:
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func _process(delta: float) -> void:
+	progress_bar.max_value= timer.wait_time
+	progress_bar.value=timer.time_left
+	
 	var wind := -0.3
 	progress_bar.max_value= timer.wait_time
 	progress_bar.value=timer.time_left
