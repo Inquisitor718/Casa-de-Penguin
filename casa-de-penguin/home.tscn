@@ -1,10 +1,25 @@
+<<<<<<< HEAD
+[gd_scene load_steps=11 format=3 uid="uid://1v76j3t52gdp"]
+=======
 [gd_scene load_steps=3 format=3 uid="uid://1v76j3t52gdp"]
+>>>>>>> 5bdeb5aeee44c4bea227369fee49ce8f92eee882
 
 [ext_resource type="Script" uid="uid://bdivaq32uc6dp" path="res://home.gd" id="1_1ey7h"]
+[ext_resource type="PackedScene" uid="uid://bs2ynfyt0nf3y" path="res://Scenes/fish.tscn" id="2_86xni"]
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="3_o1ld7"]
+[ext_resource type="PackedScene" uid="uid://2xen71bnxsnk" path="res://Scenes/HotCoco.tscn" id="3_qq0qw"]
+[ext_resource type="PackedScene" uid="uid://b47dnlbyly1av" path="res://Scenes/kitchen.tscn" id="5_tdh31"]
+[ext_resource type="PackedScene" uid="uid://bjeek4rb56exk" path="res://Scenes/fire_place.tscn" id="6_x0ehs"]
+[ext_resource type="PackedScene" uid="uid://dpadm7edd2eb0" path="res://Scenes/Pond.tscn" id="7_rdsdt"]
+[ext_resource type="PackedScene" uid="uid://26n3qaq1gt81" path="res://Scenes/Penguin.tscn" id="8_86xni"]
 
 [node name="Home" type="Node2D"]
 script = ExtResource("1_1ey7h")
+fish_scene = ExtResource("2_86xni")
+hot_choco = ExtResource("3_qq0qw")
+kitchen = ExtResource("5_tdh31")
+fire_place = ExtResource("6_x0ehs")
+Pond = ExtResource("7_rdsdt")
 
 [node name="Snowman Button" type="TextureButton" parent="."]
 offset_left = 1549.0
@@ -34,14 +49,21 @@ offset_right = 576.0
 offset_bottom = 701.0
 texture_normal = ExtResource("3_o1ld7")
 
-[node name="Penguin1" type="Sprite2D" parent="."]
-position = Vector2(863, 501)
-texture = ExtResource("3_o1ld7")
+[node name="table" type="Marker2D" parent="."]
+position = Vector2(875, 744)
 
-[node name="Penguin2" type="Sprite2D" parent="."]
-position = Vector2(1055, 501)
-texture = ExtResource("3_o1ld7")
+[node name="table_coco" type="Marker2D" parent="."]
+position = Vector2(885, 838)
 
+<<<<<<< HEAD
+[node name="Penguin" parent="." instance=ExtResource("8_86xni")]
+position = Vector2(846, 477)
+
+[node name="Penguin2" parent="." instance=ExtResource("8_86xni")]
+position = Vector2(1019, 480)
+
+=======
+>>>>>>> 5bdeb5aeee44c4bea227369fee49ce8f92eee882
 [connection signal="pressed" from="Snowman Button" to="." method="_on_snowman_button_pressed"]
 [connection signal="pressed" from="Pond Button" to="." method="_on_pond_button_pressed"]
 [connection signal="pressed" from="Fireplace" to="." method="_on_fireplace_pressed"]
