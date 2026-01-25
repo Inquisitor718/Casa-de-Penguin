@@ -61,7 +61,7 @@ func _on_texture_button_2_pressed() -> void:
 	print(ProgresBar.Current_Energy)
 
 
-
+#lol
 
 #transition to different rooms
 #
