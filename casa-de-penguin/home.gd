@@ -97,8 +97,7 @@ func _on_snowman_button_pressed() -> void:
 		
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await tween_snowman_zoom.finished
-	get_tree().change_scene_to_packed(Snowman)
-	
+	get_tree().change_scene_to_file("res://Scenes/Snowman.tscn")
 	
 
 
