@@ -113,4 +113,7 @@ func _on_fireplace_pressed() -> void:
 
 
 func _on_kitchen_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/kitchen.tscn")
+	var transition_scene = preload("res://Scenes/cocoa_splash.tscn").instantiate()
+	get_tree().current_scene.add_child(transition_scene)
+	transition_scene.play_transition("res://Scenes/kitchen.tscn")
+	
