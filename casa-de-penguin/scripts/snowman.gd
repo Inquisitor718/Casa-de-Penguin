@@ -1,6 +1,6 @@
 extends Node2D
 
-
+@export var zoom:=0
 @export var points: int
 
 @onready var snowman_pos: Marker2D = $snowman_pos
@@ -57,4 +57,5 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
+	zoom=1
 	get_tree().change_scene_to_packed(home)

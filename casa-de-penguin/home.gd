@@ -27,6 +27,7 @@ var dragging = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
+	
 	place_fish_and_coco()
 	ProgresBar.Decay_Rate = 0.5
 	camera_2d.global_position=Vector2(963,542)
