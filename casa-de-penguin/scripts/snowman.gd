@@ -2,9 +2,10 @@ extends Node2D
 
 @export var mainscene_transition: PackedScene
 @export var points: int
-
+@export var home: PackedScene
 @onready var snowman_pos: Marker2D = $snowman_pos
-
+@onready var timer = $Timer
+@onready var progress_bar = $Camera2D/CanvasLayer/TextureProgressBar
 var timeout := 0
 var target_rot := 0.0
 var duration := 0.12
@@ -32,8 +33,11 @@ func _rotate(step: float) -> void:
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func _process(delta: float) -> void:
+	progress_bar.max_value= timer.wait_time
+	progress_bar.value=timer.time_left
+	
 	var wind := -0.3
-
+	
 	if timeout == 0:
 		snowman_pos.rotation = clamp(snowman_pos.rotation + wind * delta, -1.5, 1.5)
 
