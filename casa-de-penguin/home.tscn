@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://2xen71bnxsnk" path="res://Scenes/HotCoco.tscn" id="3_qq0qw"]
 [ext_resource type="PackedScene" uid="uid://b47dnlbyly1av" path="res://Scenes/kitchen.tscn" id="5_tdh31"]
 [ext_resource type="PackedScene" uid="uid://bjeek4rb56exk" path="res://Scenes/fire_place.tscn" id="6_x0ehs"]
-[ext_resource type="PackedScene" uid="uid://dpadm7edd2eb0" path="res://Pond.tscn" id="7_rdsdt"]
+[ext_resource type="PackedScene" uid="uid://dpadm7edd2eb0" path="res://BekarPond.tscn" id="7_rdsdt"]
 [ext_resource type="PackedScene" uid="uid://26n3qaq1gt81" path="res://Scenes/Penguin.tscn" id="8_86xni"]
 
 [node name="Home" type="Node2D"]
@@ -58,6 +58,9 @@ scale = Vector2(1.7926829, 1.7926829)
 [node name="Penguin2" parent="." instance=ExtResource("8_86xni")]
 position = Vector2(1284, 446)
 scale = Vector2(1.7926829, 1.7926829)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(961, 539)
 
 [connection signal="pressed" from="Snowman Button" to="." method="_on_snowman_button_pressed"]
 [connection signal="pressed" from="Pond Button" to="." method="_on_pond_button_pressed"]
