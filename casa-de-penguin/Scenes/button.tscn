@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="1_1cmwl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lkjnc"]
-radius = 94.33981
+radius = 71.00704
 
 [node name="Button" type="Node2D"]
 script = ExtResource("1_0kpiu")
@@ -16,7 +16,7 @@ shape = SubResource("CircleShape2D_lkjnc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 z_index = -1
-scale = Vector2(1.765625, 1.640625)
+scale = Vector2(1.28125, 1.2812499)
 texture = ExtResource("1_1cmwl")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
