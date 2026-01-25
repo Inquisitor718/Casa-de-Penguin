@@ -18,9 +18,9 @@ fire_place = ExtResource("6_x0ehs")
 Pond = ExtResource("7_rdsdt")
 
 [node name="Snowman Button" type="TextureButton" parent="."]
-offset_left = 1549.0
+offset_left = 1548.0
 offset_top = 169.0
-offset_right = 1714.0
+offset_right = 1713.0
 offset_bottom = 315.0
 texture_normal = ExtResource("3_o1ld7")
 
