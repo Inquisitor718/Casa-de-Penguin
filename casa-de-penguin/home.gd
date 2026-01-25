@@ -1,10 +1,12 @@
 extends Node2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var snowman_button: TextureButton = $"Snowman Button"
+@onready var snowfall: GPUParticles2D = $Snowfall
 
 @onready var progress_bar = $CanvasLayer/TextureProgressBar
 @onready var table: Marker2D = $table
 @onready var table_coco: Marker2D = $table_coco
+@onready var macchi: Sprite2D = $macchi
 
 @export var fish_scene: PackedScene
 @export var hot_choco: PackedScene
@@ -106,8 +108,7 @@ func _on_snowman_button_pressed() -> void:
 
 
 func _on_pond_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Pond.tscn")
-
+	get_tree().change_scene_to_file("res://Scenes/home_to_pond_trans.tscn")
 
 func _on_fireplace_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/fire_place.tscn")
