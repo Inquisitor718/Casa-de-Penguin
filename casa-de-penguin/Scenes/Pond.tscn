@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dpadm7edd2eb0"]
+[gd_scene load_steps=24 format=3 uid="uid://dpadm7edd2eb0"]
 
 [ext_resource type="Script" uid="uid://djvirrobmke7h" path="res://Pond.gd" id="1_4nafw"]
 [ext_resource type="PackedScene" uid="uid://1v76j3t52gdp" path="res://home.tscn" id="2_jfnhc"]
@@ -129,6 +129,26 @@ animations = [{
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mck8p"]
 gradient = SubResource("Gradient_4nafw")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jfnhc"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(600, 10, 1)
+angle_min = 200.00002
+angle_max = 240.00002
+spread = 20.0
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+gravity = Vector3(-150, 120, 0)
+linear_accel_min = -120.0
+linear_accel_max = -60.0
+scale_min = 5.0
+scale_max = 10.0
+color = Color(0.8980392, 0.9490196, 1, 0.8)
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 2.5
+turbulence_noise_speed_random = 0.8
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_4nafw")
 home = ExtResource("2_jfnhc")
@@ -179,6 +199,13 @@ texture_progress = ExtResource("2_mck8p")
 wait_time = 15.0
 one_shot = true
 autostart = true
+
+[node name="Snowfall" type="GPUParticles2D" parent="."]
+position = Vector2(946, 64)
+scale = Vector2(-3.5452309, -14.5164385)
+amount = 600
+lifetime = 50.0
+process_material = SubResource("ParticleProcessMaterial_jfnhc")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
