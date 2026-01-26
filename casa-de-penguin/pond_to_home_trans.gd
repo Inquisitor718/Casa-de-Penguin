@@ -28,7 +28,7 @@ func _ready() -> void:
 		Vector2(961,542),
 		1
 	).set_trans(Tween.TRANS_LINEAR)
-	
+	await tween_camera.finished
 	var tween_pond2 :=create_tween()
 	tween_pond2.tween_property(
 		macchi,
