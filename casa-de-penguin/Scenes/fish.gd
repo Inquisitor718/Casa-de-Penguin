@@ -23,6 +23,7 @@ func _input(event):
 			print("drag released")
 			if inside_penguin:
 				ProgresBar.add_energy(10.0)
+				ProgresBar.fish_count = max(ProgresBar.fish_count - 1, 0)
 				print("Dropped inside Penguin Area!")
 				queue_free()
 
