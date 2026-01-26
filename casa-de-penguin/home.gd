@@ -50,6 +50,8 @@ func _ready() -> void:
 			0.74
 			
 		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		ProgresBar.add_energy(ProgresBar.points*0.3)
+		ProgresBar.zoom=0
 		
 		place_fish_and_coco()
 		ProgresBar.Decay_Rate = 0.1
