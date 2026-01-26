@@ -23,7 +23,7 @@ var decay_block_time := 0.0
 func _ready() -> void:
 	snowfall.preprocess = 100
 	snowfall.emitting = true
-	start_fishing_loop()
+	call_deferred("_start_fishing_safely")
 
 func start_fishing_loop() -> void:
 	while true:
@@ -74,7 +74,13 @@ func _on_texture_button_pressed() -> void:
 	if reel.value >= 100:
 		print("fish caught!")
 		IsFish = false
+		ProgresBar.add_fish()
 
 
 func _on_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://Scenes/pond_to_home_trans.tscn")
+
+func _start_fishing_safely():
+	await get_tree().process_frame
+	await get_tree().process_frame
+	start_fishing_loop()

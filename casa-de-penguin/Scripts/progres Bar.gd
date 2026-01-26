@@ -2,14 +2,14 @@ extends Node
 var zoom:=0
 
 
-var fish_count: int = 4
+var fish_count: int = 0
 var hot_choco: int = 0
 var Comfy_Points: int = 0
 
 
 @export var MaxEnergy : float= 100.0
 @export var Current_Energy : float = 100.0
-var Decay_Rate : float = 0.5 
+var Decay_Rate : float = 0.2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -55,3 +55,10 @@ func add_hot_choco():
 # optional helper
 func reset_hot_choco():
 	hot_choco = 0
+
+func add_fish():
+	if fish_count < 4:
+		fish_count += 1
+
+func reset_fish():
+	fish_count = 0

@@ -33,12 +33,12 @@ func _process(delta):
 
 
 func _on_area_entered(area):
-	if area.name == "Penguin" or "Penguin2":
+	if area.name == "Penguin" or area.name == "Penguin2":
 		inside_penguin = true
 		print("in")
 
 
 func _on_area_exited(area: Area2D) -> void:
-	if area.name == "Penguin" or "Penguin2":
+	if area.name == "Penguin" or area.name == "Penguin2":
 		print("out")
 		inside_penguin = false

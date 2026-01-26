@@ -16,7 +16,7 @@ extends Node2D
 @export var Pond: PackedScene
 
 
-var fish= ProgresBar.fish_count
+
 
 var dragging = false
 @export var fish_spacing : float = 25.0
@@ -52,11 +52,11 @@ func _ready() -> void:
 		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		
 		place_fish_and_coco()
-		ProgresBar.Decay_Rate = 0.5
+		ProgresBar.Decay_Rate = 0.1
 	else:
 		camera_2d.global_position=Vector2(963,542)
 		place_fish_and_coco()
-		ProgresBar.Decay_Rate = 0.5
+		ProgresBar.Decay_Rate = 0.1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -67,21 +67,29 @@ func _process(delta: float) -> void:
 
 
 func place_fish_and_coco():
+
+	# Clear previous fish
+	for child in table.get_children():
+		child.queue_free()
+
+	# Clear previous coco
 	for child in table_coco.get_children():
 		child.queue_free()
-	
-	for i in range(fish): 
+
+	# Spawn fish (max 4 automatically)
+	for i in range(ProgresBar.fish_count):
 		var fish_instance = fish_scene.instantiate()
 		table.add_child(fish_instance)
-		
-		fish_instance.global_position = (table.global_position+ Vector2(i * fish_spacing, 0))
+		fish_instance.global_position = table.global_position + Vector2(i * fish_spacing, 0)
 		print("added fish")
-	
+
+	# Spawn hot coco
 	for i in range(ProgresBar.hot_choco):
 		var choco_instance = hot_choco.instantiate()
 		table_coco.add_child(choco_instance)
 		choco_instance.global_position = table_coco.global_position + Vector2(i * coco_spacing, 0)
 		print("added hot choco")
+
 
 #----feeding logic
 

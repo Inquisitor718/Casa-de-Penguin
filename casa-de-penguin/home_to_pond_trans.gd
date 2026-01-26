@@ -26,7 +26,6 @@ func _ready() -> void:
 		Vector2(-961,542),
 		1
 	).set_trans(Tween.TRANS_LINEAR)
-	await tween_camera.finished
 	var tween_pond2 :=create_tween()
 	tween_pond2.tween_property(
 		macchi,
@@ -36,6 +35,8 @@ func _ready() -> void:
 	).set_trans(Tween.TRANS_LINEAR)
 	await tween_pond2.finished
 	get_tree().change_scene_to_file("res://Scenes/Pond.tscn")
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
