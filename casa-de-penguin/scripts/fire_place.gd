@@ -75,10 +75,11 @@ func _on_score_changed(count: int):
 
 func _on_timer_timeout():
 	print("Final score:", score)
+	ProgresBar.add_energy(score*10)
 	
 	get_tree().paused = true
 	await get_tree().create_timer(0.5, true).timeout
-	ProgresBar.add_energy(score*20)
+	
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://home.tscn")
 	
