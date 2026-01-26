@@ -1,5 +1,6 @@
 extends Node
 var zoom:=0
+var points:=0
 
 
 var fish_count: int = 0

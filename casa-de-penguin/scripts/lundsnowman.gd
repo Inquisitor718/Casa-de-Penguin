@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var points: int
 
 @onready var snowman_pos: Marker2D = $snowman_pos
 @onready var snowfall: GPUParticles2D = $Snowfall
@@ -24,8 +23,8 @@ func _ready() -> void:
 	await get_tree().create_timer(15.0).timeout
 	timeout = 1
 
-	points = floor(100.0 * ((0.7 - min(0.7, abs(snowman_pos.rotation))) / 0.7))
-	print(points)
+	ProgresBar.points = floor(100.0 * ((0.7 - min(0.7, abs(snowman_pos.rotation))) / 0.7))
+	print(ProgresBar.points)
 
 func _rotate(step: float) -> void:
 	target_rot = snowman_pos.rotation
