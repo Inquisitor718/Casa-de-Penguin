@@ -106,7 +106,18 @@ func _on_pond_button_pressed() -> void:
 
 
 func _on_fireplace_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/fire_place.tscn")
+	var transition_scene = preload("res://Scenes/Fireplace_Transition.tscn")
+	
+	# 2. Uska actual instance banao (Ye step missing tha)
+	var transition_instance = transition_scene.instantiate()
+	
+	# 3. Isko "Root" mein add karo, taaki Scene change hone par ye delete na ho
+	get_tree().root.add_child(transition_instance)
+	
+	# 4. Ab function call karo (Make sure function ka naam wahi ho jo script me hai)
+	# Humne pichle steps me iska naam "change_scene" rakha tha.
+	# Agar aapne rename karke "play_transition" kar diya hai, toh wahi use karein.
+	transition_instance.change_scene("res://Scenes/fire_place.tscn")
 
 
 func _on_kitchen_pressed() -> void:

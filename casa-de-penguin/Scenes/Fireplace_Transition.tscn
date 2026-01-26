@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwbrjxifhg4ww"]
+
+[ext_resource type="Script" uid="uid://blox5meelw0a" path="res://Scripts/fireplace_transition.gd" id="1_ec2ka"]
+[ext_resource type="Texture2D" uid="uid://dr2qxydjkop5e" path="res://assets/smoke.png" id="2_epy6x"]
+[ext_resource type="Texture2D" uid="uid://dlktr5imiwco3" path="res://assets/Fire.png" id="3_2n4ee"]
+[ext_resource type="Texture2D" uid="uid://b2f2ww2pjduh0" path="res://assets/Black.png" id="4_5d7mj"]
+
+[node name="TransitionScreen" type="CanvasLayer"]
+script = ExtResource("1_ec2ka")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1921.0
+offset_bottom = 1076.0
+scale = Vector2(1, 3.72)
+color = Color(1, 1, 1, 0)
+
+[node name="Smoke" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_top = 1080.0
+offset_right = 1920.0
+offset_bottom = 2160.0
+texture = ExtResource("2_epy6x")
+
+[node name="Fire" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 1080.0
+offset_right = 1917.0
+offset_bottom = 2160.0
+texture = ExtResource("3_2n4ee")
+
+[node name="Black" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_top = 1080.0
+offset_right = 1920.0
+offset_bottom = 2160.0
+texture = ExtResource("4_5d7mj")
