@@ -14,7 +14,7 @@ extends Node2D
 
 
 var fish= ProgresBar.fish_count
-var choco= ProgresBar.hot_choco
+
 var dragging = false
 @export var fish_spacing : float = 25.0
 @export var coco_spacing : float =20.0
@@ -26,7 +26,7 @@ func _ready() -> void:
 
 	
 	place_fish_and_coco()
-	ProgresBar.Decay_Rate = 0.5
+	ProgresBar.Decay_Rate = 0.1
 	camera_2d.global_position=Vector2(963,542)
 
 
@@ -38,6 +38,8 @@ func _process(delta: float) -> void:
 
 
 func place_fish_and_coco():
+	for child in table_coco.get_children():
+		child.queue_free()
 	
 	for i in range(fish): 
 		var fish_instance = fish_scene.instantiate()
@@ -46,11 +48,10 @@ func place_fish_and_coco():
 		fish_instance.global_position = (table.global_position+ Vector2(i * fish_spacing, 0))
 		print("added fish")
 	
-	for i in range(choco): 
+	for i in range(ProgresBar.hot_choco):
 		var choco_instance = hot_choco.instantiate()
 		table_coco.add_child(choco_instance)
-		
-		choco_instance.global_position = (table_coco.global_position+ Vector2(i * coco_spacing, 0))
+		choco_instance.global_position = table_coco.global_position + Vector2(i * coco_spacing, 0)
 		print("added hot choco")
 
 #----feeding logic
@@ -63,20 +64,6 @@ func _on_texture_button_2_pressed() -> void:
 
 #lol
 
-#transition to different rooms
-#
-#func _on_snowman_button_pressed() -> void:
-	#get_tree().change_scene_to_packed(Snowman)
-#
-#
-#func _on_pond_button_pressed() -> void:
-	#get_tree().change_scene_to_packed(Pond)
-#
-#func _on_fireplace_pressed() -> void:
-	#get_tree().change_scene_to_packed(fire_place)
-#
-#func _on_kitchen_pressed() -> void:
-	#get_tree().change_scene_to_packed(kitchen)
 
 
 func _on_snowman_button_pressed() -> void:

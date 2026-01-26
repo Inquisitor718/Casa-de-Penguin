@@ -2,7 +2,7 @@ extends Node
 
 
 var fish_count: int = 4
-var hot_choco: int = 2
+var hot_choco: int = 0
 var Comfy_Points: int = 0
 
 
@@ -45,3 +45,12 @@ func add_energy(amount: float):
 		
 func reset_energy():
 	Current_Energy = MaxEnergy
+
+func add_hot_choco():
+	if hot_choco < 2:
+		hot_choco += 1
+
+
+# optional helper
+func reset_hot_choco():
+	hot_choco = 0
