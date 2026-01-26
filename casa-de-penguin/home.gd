@@ -1,9 +1,12 @@
 extends Node2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var snowman_button: TextureButton = $"Snowman Button"
+@onready var snowfall: GPUParticles2D = $Snowfall
 
+@onready var progress_bar = $CanvasLayer/TextureProgressBar
 @onready var table: Marker2D = $table
 @onready var table_coco: Marker2D = $table_coco
+@onready var macchi: Sprite2D = $macchi
 
 @export var fish_scene: PackedScene
 @export var hot_choco: PackedScene
@@ -28,6 +31,32 @@ func _ready() -> void:
 	place_fish_and_coco()
 	ProgresBar.Decay_Rate = 0.1
 	camera_2d.global_position=Vector2(963,542)
+	if(ProgresBar.zoom==1):
+		camera_2d.zoom=Vector2(1922/snowman_button.size.x,1078/snowman_button.size.y)
+		camera_2d.global_position=Vector2(1633,241)
+		var tween_snowman_move := create_tween()
+		var tween_snowman_zoom := create_tween()
+		
+		tween_snowman_zoom.tween_property(
+			camera_2d,
+			"zoom",
+			Vector2(1,1),
+			1
+		).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+		tween_snowman_move.tween_property(
+			camera_2d,
+			"global_position",
+			Vector2(963,542),
+			0.74
+			
+		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		
+		place_fish_and_coco()
+		ProgresBar.Decay_Rate = 0.5
+	else:
+		camera_2d.global_position=Vector2(963,542)
+		place_fish_and_coco()
+		ProgresBar.Decay_Rate = 0.5
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -74,13 +103,13 @@ func _on_snowman_button_pressed() -> void:
 		camera_2d,
 		"zoom",
 		Vector2(1922/snowman_button.size.x,1078/snowman_button.size.y),
-		0.5
+		1
 	).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
 	tween_snowman_move.tween_property(
 		camera_2d,
 		"global_position",
 		Vector2(1633,241),
-		0.37
+		0.74
 		
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await tween_snowman_zoom.finished
@@ -89,8 +118,7 @@ func _on_snowman_button_pressed() -> void:
 
 
 func _on_pond_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Pond.tscn")
-
+	get_tree().change_scene_to_file("res://Scenes/home_to_pond_trans.tscn")
 
 func _on_fireplace_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/fire_place.tscn")
