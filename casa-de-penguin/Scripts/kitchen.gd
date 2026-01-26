@@ -5,6 +5,11 @@ extends Node2D
 @onready var chain_button: TextureButton = $UI/Button
 @onready var bowl_sprite: Sprite2D = $BowlSprite
 
+# Ye transition wala scene he niche ke 3 line, mene mujhe jaha jaha lag raha thaa waha daal diye he bki 
+#		var transition_scene = preload("res://Scenes/cocoa_splash.tscn").instantiate()
+#		get_tree().current_scene.add_child(transition_scene)
+#		transition_scene.play_transition("res://home.tscn")
+
 
 @export var cook_time := 2.5
 
@@ -75,6 +80,9 @@ func _on_chain_attempt_finished(success: bool):
 		start_cooking()
 	else:
 		print("Minigame finished!")
+		var transition_scene = preload("res://Scenes/cocoa_splash.tscn").instantiate()
+		get_tree().current_scene.add_child(transition_scene)
+		transition_scene.play_transition("res://home.tscn")
 
 
 func _on_button_pressed() -> void:
