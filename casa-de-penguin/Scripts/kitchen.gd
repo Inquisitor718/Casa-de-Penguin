@@ -3,12 +3,15 @@ extends Node2D
 			  
 @onready var chain: Node2D = $chain
 @onready var chain_button: TextureButton = $UI/Button
+@onready var bowl_sprite: Sprite2D = $BowlSprite
 
 
 @export var cook_time := 2.5
 
 var cups := []
 var current_cup_index := 0
+const NORMAL_COLOR = Color(1, 1, 1)   # white = unchanged
+const READY_COLOR = Color(1, 0.4, 0.4)  # soft red, not pure red
 
 
 func _ready():
@@ -21,6 +24,7 @@ func _ready():
 	# Initial state
 	chain.disable_chain()
 	chain_button.disabled = true
+	bowl_sprite.modulate = NORMAL_COLOR
 
 	# Listen to chain result
 	chain.attempt_finished.connect(_on_chain_attempt_finished)
@@ -29,17 +33,18 @@ func _ready():
 	start_cooking()
 
 
-# -----------------------
-# COOKING PHASE
-# -----------------------
+
 func start_cooking():
 	print("Cooking...")
 	chain_button.disabled = true
+	bowl_sprite.modulate = NORMAL_COLOR
 
 	await get_tree().create_timer(cook_time).timeout
 
 	print("Ready!")
 	chain_button.disabled = false
+	set_bowl_color(READY_COLOR)
+
 
 
 # -----------------------
@@ -79,3 +84,8 @@ func _on_button_pressed() -> void:
 
 	chain_button.disabled = true
 	chain.enable_chain()
+	bowl_sprite.modulate = NORMAL_COLOR
+
+func set_bowl_color(color: Color):
+	var tween = create_tween()
+	tween.tween_property(bowl_sprite, "modulate", color, 0.3)

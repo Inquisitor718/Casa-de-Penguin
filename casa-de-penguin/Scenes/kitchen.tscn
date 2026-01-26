@@ -51,4 +51,8 @@ offset_right = 231.0
 offset_bottom = 236.0
 texture_normal = ExtResource("4_6pjjr")
 
+[node name="BowlSprite" type="Sprite2D" parent="."]
+position = Vector2(949, 161)
+texture = ExtResource("4_6pjjr")
+
 [connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]

@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bibb8wp3vylq8" path="res://assets/hit-rock-02-266304.wav" id="3_g465f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tqxuk"]
-radius = 70.0
+radius = 45.276924
 
 [node name="Coal" type="RigidBody2D" groups=["coal"]]
 collision_layer = 2
@@ -22,8 +22,8 @@ neutral_radius = 250.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(1.500001, 10.999992)
-scale = Vector2(0.5309918, 0.50775194)
+position = Vector2(-1, 4.000004)
+scale = Vector2(0.34917358, 0.29651162)
 texture = ExtResource("2_7w8tp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

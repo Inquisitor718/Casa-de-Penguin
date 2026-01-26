@@ -5,7 +5,7 @@ signal attempt_finished(success: bool)
 @onready var chain_area: Area2D = $Chain123
 @export var disappear_delay := 1.0  # seconds to wait before disappearing
 
-@export var spill_threshold := 50.0
+@export var spill_threshold := 10.0
 @export var max_pull_y := 750.0
 @export var return_speed := 600.0   # how fast chain goes back up
 
