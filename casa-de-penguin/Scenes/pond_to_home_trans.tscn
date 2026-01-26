@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://drj32ym01lgm1"]
+
+[ext_resource type="Script" uid="uid://c77g00qmos1ln" path="res://pond_to_home_trans.gd" id="1_2o0yi"]
+[ext_resource type="Texture2D" uid="uid://dlwyjfr7cjyqj" path="res://assets/6.png" id="2_tm8vv"]
+[ext_resource type="PackedScene" uid="uid://dpadm7edd2eb0" path="res://BekarPond.tscn" id="3_vphbm"]
+[ext_resource type="PackedScene" uid="uid://1v76j3t52gdp" path="res://home.tscn" id="4_xr1om"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y5h7g"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(600, 10, 1)
+angle_min = 200.00002
+angle_max = 240.00002
+spread = 20.0
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+gravity = Vector3(-150, 120, 0)
+linear_accel_min = -120.0
+linear_accel_max = -60.0
+scale_min = 5.0
+scale_max = 10.0
+color = Color(0.8980392, 0.9490196, 1, 0.8)
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 2.5
+turbulence_noise_speed_random = 0.8
+
+[node name="pond_to_home_trans" type="Node2D"]
+script = ExtResource("1_2o0yi")
+
+[node name="macchi" type="Sprite2D" parent="."]
+position = Vector2(949.9999, 536)
+scale = Vector2(34.64545, 51.41666)
+texture = ExtResource("2_tm8vv")
+region_enabled = true
+region_rect = Rect2(0, 0, 55.228973, 21.974407)
+
+[node name="Node2D" parent="." instance=ExtResource("3_vphbm")]
+position = Vector2(-1914, 3)
+script = null
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(961, 539)
+
+[node name="Home" parent="." instance=ExtResource("4_xr1om")]
+position = Vector2(-3, 3)
+script = null
+
+[node name="Snowfall" type="GPUParticles2D" parent="."]
+position = Vector2(-513, 84)
+scale = Vector2(-3.5452309, -14.5164385)
+amount = 600
+lifetime = 50.0
+process_material = SubResource("ParticleProcessMaterial_y5h7g")

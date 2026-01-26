@@ -1,26 +1,58 @@
-[gd_scene load_steps=6 format=3 uid="uid://b47dnlbyly1av"]
+[gd_scene load_steps=9 format=3 uid="uid://b47dnlbyly1av"]
 
 [ext_resource type="PackedScene" uid="uid://dqkdmfcj41bim" path="res://Scenes/Chain.tscn" id="1_7u47w"]
-[ext_resource type="PackedScene" uid="uid://drb24jw755fx" path="res://Scenes/button.tscn" id="2_23qos"]
-[ext_resource type="Script" uid="uid://cians5eyq5dvk" path="res://Scenes/chainkitchen.gd" id="2_pb1w8"]
-[ext_resource type="Script" uid="uid://7mphysv3dhic" path="res://Scenes/cup_2.gd" id="4_6pjjr"]
+[ext_resource type="Script" uid="uid://bwnkxim00uqsl" path="res://Scripts/kitchen.gd" id="1_pb1w8"]
+[ext_resource type="Texture2D" uid="uid://bxkdtofujphu3" path="res://icon.svg" id="4_6pjjr"]
 [ext_resource type="Script" uid="uid://6rvqrrvd8fao" path="res://Scenes/cup_1.gd" id="4_jbuf1"]
 
+[sub_resource type="Gradient" id="Gradient_cetdd"]
+colors = PackedColorArray(0.9882353, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o8uib"]
+gradient = SubResource("Gradient_cetdd")
+fill_from = Vector2(1, 0.08411215)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_pb1w8"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jbuf1"]
+gradient = SubResource("Gradient_pb1w8")
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_pb1w8")
 metadata/_edit_horizontal_guides_ = [797.0]
 metadata/_edit_vertical_guides_ = [1601.0]
 
-[node name="Node2D" parent="." instance=ExtResource("1_7u47w")]
-position = Vector2(1600, 180)
-script = ExtResource("2_pb1w8")
-
-[node name="Button" parent="." instance=ExtResource("2_23qos")]
-position = Vector2(380, 655)
-
-[node name="cup1" type="Node2D" parent="."]
-position = Vector2(1573, 928)
-script = ExtResource("4_jbuf1")
+[node name="chain" parent="." instance=ExtResource("1_7u47w")]
+position = Vector2(727, 167)
 
 [node name="cup2" type="Node2D" parent="."]
-position = Vector2(349, 943)
-script = ExtResource("4_6pjjr")
+position = Vector2(356, 988)
+script = ExtResource("4_jbuf1")
+
+[node name="Sprite2D" type="Sprite2D" parent="cup2"]
+position = Vector2(-5, -4)
+texture = SubResource("GradientTexture2D_o8uib")
+
+[node name="cup1" type="Node2D" parent="."]
+position = Vector2(1090, 988)
+script = ExtResource("4_jbuf1")
+can_swap = true
+
+[node name="Sprite2D" type="Sprite2D" parent="cup1"]
+texture = SubResource("GradientTexture2D_jbuf1")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Button" type="TextureButton" parent="UI"]
+offset_left = 103.0
+offset_top = 108.0
+offset_right = 231.0
+offset_bottom = 236.0
+texture_normal = ExtResource("4_6pjjr")
+
+[node name="BowlSprite" type="Sprite2D" parent="."]
+position = Vector2(949, 161)
+texture = ExtResource("4_6pjjr")
+
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]

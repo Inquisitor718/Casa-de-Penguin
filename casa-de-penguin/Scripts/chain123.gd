@@ -1,40 +1,93 @@
 extends Node2D
 
+signal attempt_finished(success: bool)
 
-@export var mainscene_transition: PackedScene
-@export var spill_thershold := 70.0
-var velocity := 500.0
+@onready var chain_area: Area2D = $Chain123
+@export var disappear_delay := 1.0  # seconds to wait before disappearing
 
-@onready var chain_123: Area2D = $Chain123
+@export var spill_threshold := 10.0
+@export var max_pull_y := 750.0
+@export var return_speed := 600.0   # how fast chain goes back up
 
 var drag := false
-var spill := false
+var can_interact := false
+var start_y := 0.0
+var frozen := false
 
-func _ready() -> void:
-	chain_123.input_pickable = true
 
-func _process(delta: float) -> void:
+func _ready():
+	chain_area.input_pickable = true
+	start_y = chain_area.position.y
 
-	if !drag:
-		chain_123.position.y = (max(0,chain_123.position.y-velocity * delta))
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:
-		drag = false
-		
-	if drag and event is InputEventMouseMotion:
-		var vel = event.relative.y
-		chain_123.position.y = min((max(0,chain_123.position.y+vel)),750)
+func enable_chain():
+	visible = true
+	can_interact = true
+	drag = false
+	frozen = false
+	chain_area.position.y = start_y
 
-		if vel > spill_thershold and not spill:
-			spill = true
-			print("spill")
 
-func _on_chain_123_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			drag = true
-			spill = false
-		else:
-			drag = false
+func disable_chain():
+	can_interact = false
+	drag = false
+	visible = false
+
+
+func _process(delta):
+	if frozen:
 		return
+	# If not dragging, smoothly return upward
+	if not drag and chain_area.position.y > start_y:
+		chain_area.position.y = move_toward(
+			chain_area.position.y,
+			start_y,
+			return_speed * delta
+		)
+
+
+func _input(event):
+	if not can_interact:
+		return
+
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
+		drag = false
+
+	if drag and event is InputEventMouseMotion:
+		var speed = abs(event.relative.y)
+
+		# Move chain downward
+		chain_area.position.y = clamp(
+			chain_area.position.y + event.relative.y,
+			start_y,
+			max_pull_y
+		)
+
+		# Spill immediately
+		if speed > spill_threshold:
+			finish(false)
+			return
+
+		# Success
+		if chain_area.position.y >= max_pull_y:
+			finish(true)
+			return
+
+
+func _on_chain_123_input_event(viewport, event, shape_idx):
+	if not can_interact:
+		return
+
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		drag = event.pressed
+
+
+func finish(success: bool):
+	can_interact = false
+	drag = false
+	frozen = true   
+	# Wait before telling kitchen (chain still visible here)
+	await get_tree().create_timer(disappear_delay).timeout
+	frozen = false
+
+	emit_signal("attempt_finished", success)

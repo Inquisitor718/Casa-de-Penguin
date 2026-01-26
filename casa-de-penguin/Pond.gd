@@ -9,10 +9,10 @@ extends Node2D
 @export var decay_factor := 2
 @export var grace_time := 0.12
 @export var grace_multiplier := 0.3
-@onready var snowfall: GPUParticles2D = $Snowfall
 
 var IsFish := false
 var decay_block_time := 0.0
+@onready var snowfall: GPUParticles2D = $Snowfall
 
 @onready var timer = $Timer
 @onready var progress_bar = $Camera2D/CanvasLayer/TextureProgressBar
@@ -21,9 +21,9 @@ var decay_block_time := 0.0
 
 
 func _ready() -> void:
-	start_fishing_loop()
 	snowfall.preprocess = 100
 	snowfall.emitting = true
+	call_deferred("_start_fishing_safely")
 
 func start_fishing_loop() -> void:
 	while true:
@@ -74,7 +74,13 @@ func _on_texture_button_pressed() -> void:
 	if reel.value >= 100:
 		print("fish caught!")
 		IsFish = false
+		ProgresBar.add_fish()
 
 
 func _on_timer_timeout() -> void:
-	get_tree().change_scene_to_packed(home)
+	get_tree().change_scene_to_file("res://Scenes/pond_to_home_trans.tscn")
+
+func _start_fishing_safely():
+	await get_tree().process_frame
+	await get_tree().process_frame
+	start_fishing_loop()

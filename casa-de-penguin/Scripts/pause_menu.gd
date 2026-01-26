@@ -50,3 +50,13 @@ func _on_main_menu_pressed():
 	dim_bg.visible = false
 	hide()
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+
+
+func _on_home_pressed() -> void:
+	get_tree().paused = false
+	pause_panel.visible = false
+	var tween = create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(dim_bg, "modulate:a", 0.0, 0.2)
+	tween.finished.connect(func(): dim_bg.visible = false)
+	get_tree().change_scene_to_file("res://home.tscn")

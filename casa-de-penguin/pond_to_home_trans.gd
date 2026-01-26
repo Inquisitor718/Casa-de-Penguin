@@ -1,0 +1,44 @@
+extends Node2D
+@onready var macchi: Sprite2D = $macchi
+@onready var camera_2d: Camera2D = $Camera2D
+@onready var snowfall: GPUParticles2D = $Snowfall
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	macchi.global_position=Vector2(951,546)
+	camera_2d.global_position=Vector2(-961,542)
+	$macchi.flip_h = true
+	snowfall.preprocess = 96
+	snowfall.emitting = true
+	await get_tree().process_frame
+	await get_tree().process_frame 
+	var tween_pond :=create_tween()
+	tween_pond.tween_property(
+		macchi,
+		"global_position",
+		Vector2(-11,541),
+		0.5
+	).set_trans(Tween.TRANS_LINEAR)
+	await tween_pond.finished
+	var tween_camera :=create_tween()
+	tween_camera.tween_property(
+		camera_2d,
+		"global_position",
+		Vector2(961,542),
+		1
+	).set_trans(Tween.TRANS_LINEAR)
+	
+	var tween_pond2 :=create_tween()
+	tween_pond2.tween_property(
+		macchi,
+		"global_position",
+		Vector2(-951,546),
+		0.5
+	).set_trans(Tween.TRANS_LINEAR)
+	await tween_pond2.finished
+	get_tree().change_scene_to_file("res://home.tscn")
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass

@@ -1,9 +1,12 @@
 extends Node2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var snowman_button: TextureButton = $"Snowman Button"
+@onready var snowfall: GPUParticles2D = $Snowfall
 
+@onready var progress_bar = $CanvasLayer/TextureProgressBar
 @onready var table: Marker2D = $table
 @onready var table_coco: Marker2D = $table_coco
+@onready var macchi: Sprite2D = $macchi
 
 @export var fish_scene: PackedScene
 @export var hot_choco: PackedScene
@@ -13,8 +16,8 @@ extends Node2D
 @export var Pond: PackedScene
 
 
-var fish= ProgresBar.fish_count
-var choco= ProgresBar.hot_choco
+
+
 var dragging = false
 @export var fish_spacing : float = 25.0
 @export var coco_spacing : float =20.0
@@ -26,8 +29,34 @@ func _ready() -> void:
 
 	
 	place_fish_and_coco()
-	ProgresBar.Decay_Rate = 0.5
+	ProgresBar.Decay_Rate = 0.1
 	camera_2d.global_position=Vector2(963,542)
+	if(ProgresBar.zoom==1):
+		camera_2d.zoom=Vector2(1922/snowman_button.size.x,1078/snowman_button.size.y)
+		camera_2d.global_position=Vector2(1633,241)
+		var tween_snowman_move := create_tween()
+		var tween_snowman_zoom := create_tween()
+		
+		tween_snowman_zoom.tween_property(
+			camera_2d,
+			"zoom",
+			Vector2(1,1),
+			1
+		).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+		tween_snowman_move.tween_property(
+			camera_2d,
+			"global_position",
+			Vector2(963,542),
+			0.74
+			
+		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		
+		place_fish_and_coco()
+		ProgresBar.Decay_Rate = 0.1
+	else:
+		camera_2d.global_position=Vector2(963,542)
+		place_fish_and_coco()
+		ProgresBar.Decay_Rate = 0.1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,20 +67,29 @@ func _process(delta: float) -> void:
 
 
 func place_fish_and_coco():
-	
-	for i in range(fish): 
+
+	# Clear previous fish
+	for child in table.get_children():
+		child.queue_free()
+
+	# Clear previous coco
+	for child in table_coco.get_children():
+		child.queue_free()
+
+	# Spawn fish (max 4 automatically)
+	for i in range(ProgresBar.fish_count):
 		var fish_instance = fish_scene.instantiate()
 		table.add_child(fish_instance)
-		
-		fish_instance.global_position = (table.global_position+ Vector2(i * fish_spacing, 0))
+		fish_instance.global_position = table.global_position + Vector2(i * fish_spacing, 0)
 		print("added fish")
-	
-	for i in range(choco): 
+
+	# Spawn hot coco
+	for i in range(ProgresBar.hot_choco):
 		var choco_instance = hot_choco.instantiate()
 		table_coco.add_child(choco_instance)
-		
-		choco_instance.global_position = (table_coco.global_position+ Vector2(i * coco_spacing, 0))
+		choco_instance.global_position = table_coco.global_position + Vector2(i * coco_spacing, 0)
 		print("added hot choco")
+
 
 #----feeding logic
 
@@ -63,20 +101,6 @@ func _on_texture_button_2_pressed() -> void:
 
 #lol
 
-#transition to different rooms
-#
-#func _on_snowman_button_pressed() -> void:
-	#get_tree().change_scene_to_packed(Snowman)
-#
-#
-#func _on_pond_button_pressed() -> void:
-	#get_tree().change_scene_to_packed(Pond)
-#
-#func _on_fireplace_pressed() -> void:
-	#get_tree().change_scene_to_packed(fire_place)
-#
-#func _on_kitchen_pressed() -> void:
-	#get_tree().change_scene_to_packed(kitchen)
 
 
 func _on_snowman_button_pressed() -> void:
@@ -87,13 +111,13 @@ func _on_snowman_button_pressed() -> void:
 		camera_2d,
 		"zoom",
 		Vector2(1922/snowman_button.size.x,1078/snowman_button.size.y),
-		0.5
+		1
 	).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
 	tween_snowman_move.tween_property(
 		camera_2d,
 		"global_position",
 		Vector2(1633,241),
-		0.37
+		0.74
 		
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await tween_snowman_zoom.finished
@@ -102,8 +126,7 @@ func _on_snowman_button_pressed() -> void:
 
 
 func _on_pond_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Pond.tscn")
-
+	get_tree().change_scene_to_file("res://Scenes/home_to_pond_trans.tscn")
 
 func _on_fireplace_pressed() -> void:
 	var transition_scene = preload("res://Scenes/Fireplace_Transition.tscn")
